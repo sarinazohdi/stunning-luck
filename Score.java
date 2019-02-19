@@ -33,20 +33,4 @@ public class Score {
     if (nScore >= 0)
     Score = nScore;
   }
-  /**
-    * A method that increases/decreases the score of the player.
-    * For now, I made it so that "win" is when result equals to 1, "lose" is when result equals 0 and "lose all (reset)" is when result = -1.
-    * This method is just temporar. I can add/change all the details once we set all the specific rules of the game.
-    */
-  public void changeScore(){
-    if (result == 1)
-    Score += 1;
-    System.out.println("You won! Your score is:" + Score);
-    if (result == 0)
-    Score -= 1;
-    System.out.println("You lost! Your score is:" + Score);
-    if (result == -1)
-    Score = 0;
-    System.out.println("You lost everything! Your score will be set to 0.");
-  }
 }
