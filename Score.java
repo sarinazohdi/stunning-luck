@@ -4,7 +4,6 @@
   */
 public class Score {
   private int Score;
-  private int result;
 /**
   /* A constructor that sets the initial score in new objects.
   * @param initialScore is assigned to the score.
