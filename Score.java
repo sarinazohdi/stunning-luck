@@ -33,4 +33,18 @@ public class Score {
     if (nScore >= 0)
     Score = nScore;
   }
+ /**
+    * A method that increases the score of the player by the points gained.
+    * @param addedScore is the numerical value of the points won.
+    */
+  public void addScore(int addedScore){
+    Score += addedScore;
+  }
+  /**
+    * A method that decreases the score of the player by the points lost.
+    * @param subtractScore is the numerical value of the points lost.
+    */
+  public void subtractScore(int subtractedScore){
+    Score -= subtractedScore;
+  }
 }
