@@ -41,7 +41,7 @@ public class Score {
   }
   /**
     * A method that decreases the score of the player by the points lost.
-    * @param subtractScore is the numerical value of the points lost.
+    * @param subtractedScore is the numerical value of the points lost.
     */
   public void subtractScore(int subtractedScore){
     Score -= subtractedScore;
