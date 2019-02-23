@@ -7,6 +7,7 @@ public class Player{
     private int numOfSpins;
     private int score;
     private int strikes;
+    private ArrayList<Square> awards = new ArrayList<Square>();
     /* setter constructor that allows you to set all the instance variables in the new object
     * @param setName gets assigned to the player name
     * @param setSpins gets assigned to the number of spins 
@@ -18,6 +19,7 @@ public class Player{
         this.numOfSpins = setSpins;
         this.score = setScore;
         this.strikes = setStrikes;
+        this.awards = new ArrayList<Square>();
     }
     /*Default constructor that allows you to set the name and gives the other instance variables their default values
     * @param setName gets assigned to the player name
@@ -27,6 +29,7 @@ public class Player{
         this.numOfSpins = 0;
         this.score = 0;
         this.strikes = 0;
+        this.awards = new ArrayList<Square>();
     }
     /*Copy Constructor
     * @param p of type Player who's instance variables get copied and reassigned to this object
@@ -36,6 +39,7 @@ public class Player{
         this.numOfSpins = p.numOfSpins;
         this.score = p.score;
         this.strikes = p.strikes;
+        this.awards = p.awards;
     }
     /*
     * @return the name of the player
@@ -97,5 +101,9 @@ public class Player{
    
     public void setStrikes(int newStrikes){
         this.strikes = newStrikes;
+    }
+    
+    public void addAward(Square newAward){
+        this.awards.add(newAward);
     }
 }
