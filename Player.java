@@ -87,6 +87,12 @@ public class Player{
         this.numOfSpins = newSpins;
     }
     
+    /**
+    *@param addedSpins is added to the already existing number of spins
+    */
+    public void addSpins(int addedSpins){
+        this.numOfSpins += addedSpins;
+    }
     /*
     * @param newScore is assigned to the score instance variable
     */
