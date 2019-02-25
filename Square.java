@@ -31,6 +31,16 @@ public class Square {
         this.spins = spins;
         this.image = image;
     }
+    
+    /** 
+    * Copy Constructor
+    */
+    public Square(Spuare sqr){
+        this.title = sqr.title;
+        this.value = sqr.value;
+        this.spins = sqr.spins;
+        this.image = sqr.image;
+    }
 
     /*
     * @param title is assigned to the Square title
