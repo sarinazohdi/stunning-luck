@@ -35,7 +35,7 @@ public class Square {
     /** 
     * Copy Constructor
     */
-    public Square(Spuare sqr){
+    public Square(Square sqr){
         this.title = sqr.title;
         this.value = sqr.value;
         this.spins = sqr.spins;
@@ -70,7 +70,7 @@ public class Square {
     * @return the square title
     */
     public String getTitle(){
-        Square copySquare = new Square(this.title, this.value, this.spins, this.strikes);
+        Square copySquare = new Square(this.title, this.value, this.spins, this.image);
         return copySquare.title;
     }
 
@@ -78,7 +78,7 @@ public class Square {
     * @return the square bonus spins
     */
     public int getSpins(){
-        Square copySquare = new Square(this.title, this.value, this.spins, this.strikes);
+        Square copySquare = new Square(this.title, this.value, this.spins, this.image);
         return copySquare.spins;
     }
 
@@ -86,7 +86,7 @@ public class Square {
     * @return the square value
     */
     public int getValue(){
-        Square copySquare = new Square(this.title, this.value, this.spins, this.strikes);
+        Square copySquare = new Square(this.title, this.value, this.spins, this.image);
         return copySquare.value;
     }
 
