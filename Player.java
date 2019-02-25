@@ -109,7 +109,21 @@ public class Player{
         this.strikes = newStrikes;
     }
     
+    /** 
+    * This adds @param newAward to the awards array in the player class
+    */
     public void addAward(Square newAward){
         this.awards.add(newAward);
+    }
+    /** 
+    * this returns a copy of the ArrayList awards in order to maintain security of the awards list a player has
+    */
+    public ArrayList<Square> getAwards(){
+        ArrayList<Square> getterAwards = new ArrayList<Square>();
+        for (Square a : this.awards){
+            getterAwards.add(a);
+        } 
+
+        return getterAwards;
     }
 }
