@@ -61,12 +61,20 @@ public class Board{
  
         }
     }
+    public ArrayList<Square> getList(){
+        ArrayList<Square> newBoard = new ArrayList<Square>();
+        for (Square square: newBoard){
+            newBoard.add(new Square(square));
+        }
+        return newBoard;
+    }
 
-    public void RandomizeList(ArrayList<Square> al){
+    public ArrayList<Square> RandomizeList(ArrayList<Square> al){
         ArrayList<Square> randomBoard = new ArrayList<Square>(); 
         for (int j = 1; j <= 20; j++){
             randomBoard.add(gameboard.get(r.nextInt(gameboard.size())));
         }
+        return randomBoard;
 
     }
 
