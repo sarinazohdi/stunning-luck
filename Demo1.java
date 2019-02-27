@@ -10,15 +10,41 @@ public class Demo1{
         Random random = new Random();
         Board gameBoard = new Board();
         gameBoard.populateBoard();
-        ArrayList<Square> squares = gameBoard.RandomizeList(gameBoard.getList());
+        Player player =  new Player("John");
+       /* ArrayList<Square> squares = gameBoard.RandomizeList(gameBoard.getList());
         for (Square square : squares){
             System.out.println(square.getTitle());
 
-        }
+        }*/
         Scanner keyboard  = new Scanner(System.in);
-        System.out.println("Press any key to spin");
-        String input = keyboard.nextLine();
+        while(true){
+            ArrayList<Square> squares = gameBoard.RandomizeList(gameBoard.getList());
+            for (Square square : squares){
+                System.out.println(square.getTitle());
+    
+            }
+            System.out.println("Press Q to spin and W to exit");
+            String input = keyboard.nextLine();
+            if(input.equalsIgnoreCase("q")){
+                Square newAward = squares.get(random.nextInt(squares.size()));
+                player.addAward(newAward);
+                System.out.println("\nYour reward: " +newAward.getTitle()+"\n\n\n");
+
+                for (Square square : squares){
+                    System.out.println(square.getTitle());
+                }  
         
-        System.out.println("\nYour reward: " +squares.get(random.nextInt(squares.size())).getTitle());
+            } 
+            
+            if(input.equalsIgnoreCase("w")){
+                break;
+            }
+
+           
+        }
+        System.out.println("Your awards: ");
+        for (Square square : player.getAwards()){
+            System.out.println(square.getTitle());
+        }  
     }
 }
