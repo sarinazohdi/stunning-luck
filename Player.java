@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 /*
 * The Player class keeps track of the player's status throughout the game
 * This class can modify and access the player name, number of spins, score and the number of strikes
