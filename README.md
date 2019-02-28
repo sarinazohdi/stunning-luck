@@ -10,7 +10,7 @@ Demo - 1 Instructions
 --------
 Demo - 1 
 --------
-In this text based demo, we have utilized the Board classto get a list of possible awards 
+In this text based demo, we have utilized the Board class to get a list of possible awards 
 the player can win. We then allow the user to spin the board and our program will randomly 
 choose a prize for the player. The Player class is utilized for keeping track of the players
 status throughout our game.
