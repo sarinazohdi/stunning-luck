@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -8,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.HBox;
@@ -19,13 +22,14 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.Button;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeType;
+import java.util.Random;
 
 
 public class window2 extends Application {
 
     public static final int GRID = 150;
 
-
+    private  Rectangle highlighter = currentSelection(random());
     public static void main(String[] args) {
         launch(args);
     }
@@ -36,6 +40,10 @@ public class window2 extends Application {
         Scene scene = new Scene(root, 900, 900, Color.BLACK);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Stunning Luck");
+        Board board = new Board();
+        board.populateBoard();
+        ArrayList<Square> randomBoard = board.RandomizeList(board.getList());
+        
 
         root.getChildren().add(prizeBox(0, 0, GRID, GRID));
         root.getChildren().add(prizeBox(GRID, 0, GRID, GRID));
@@ -57,15 +65,50 @@ public class window2 extends Application {
         root.getChildren().add(prizeBox(2 * GRID, 5 * GRID, GRID, GRID));
         root.getChildren().add(prizeBox(3 * GRID, 5 * GRID, GRID, GRID));
         root.getChildren().add(prizeBox(4 * GRID, 5 * GRID, GRID, GRID));
+        /* for (Square square: randomBoard){
+            System.out.println(square.getTitle());
+        } */
+       
 
+        for(int i = 0; i<6;i++){
+            Label label = new Label(randomBoard.get(i).getTitle());
+            label.setTextFill(Color.WHITE);
+            label.setAlignment(Pos.BASELINE_CENTER);
+            label.setLayoutX((i+0.5)*GRID);
+            label.setLayoutY((0.5*GRID));
+            
+            root.getChildren().add(label);
+
+        }
 
         root.getChildren().add(prizeBox(GRID, GRID, 4 *GRID, 4 *GRID));
 
-        root.getChildren().add(currentSelection(4));
-
-
+        
+        
         primaryStage.show();
+       
+        root.getChildren().add(highlighter);
 
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1000),
+        new EventHandler<ActionEvent>() {
+            
+            @Override
+            public void handle(ActionEvent event){
+                
+                root.getChildren().remove(highlighter);
+                highlighter = currentSelection(random());
+                root.getChildren().add(highlighter);
+                
+            }
+
+        }
+        
+        
+        
+        
+        ));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
 
     }
 
@@ -190,6 +233,18 @@ public class window2 extends Application {
 
         return selection;
     }
+
+    public int random(){
+        Random r = new Random();
+        return r.nextInt(20);
+
+
+    }
+
+    
+
+
+
 
 
 }
