@@ -14,36 +14,42 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class SnakeDemo extends Application {
+	//private Grid grid;
+  private GraphicsContext graphicsContext;
+  private static final int WINDOW_HEIGHT = 600;
+	private static final int WINDOW_WIDTH = 600;
+	private static final int PIXEL_SIZE = 20;
 
 	public static void main(String[] args) {
-		Application.launch(args);
+		launch(args);
 	}
 
-  private Grid grid;
-  private GraphicsContext graphicsContext;
-  private static final int WINDOW_HEIGHT = 800;
-	private static final int WINDOW_WIDTH = 800;
-	private static final int PIXEL_SIZE = 20;
+
 
   @Override
 	public void start(Stage primaryStage) throws Exception {
+		Group root = new Group();
+		Canvas canvas = new Canvas(WINDOW_WIDTH, WINDOW_HEIGHT);
+		GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
     graphicsContext.setFill(Color.WHITE);
 		graphicsContext.fillRect(0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
     graphicsContext.setStroke(Color.GRAY);
     graphicsContext.setLineWidth(0.5);
 
-    for (int x = 0; x < WINDOW_WIDTH; x += GRID_BLOCK_SIZE) {
+    for (int x = 0; x < WINDOW_WIDTH; x += PIXEL_SIZE) {
     	graphicsContext.strokeLine(x, 0, x, x + WINDOW_HEIGHT);
     }
 
-    for (int y = 0; y < WINDOW_HEIGHT; y += GRID_BLOCK_SIZE) {
+    for (int y = 0; y < WINDOW_HEIGHT; y += PIXEL_SIZE) {
     	graphicsContext.strokeLine(0, y, y + WINDOW_WIDTH, y);
     }
 
     primaryStage.setTitle("Snake");
-		Group root = new Group();
-		Canvas canvas = new Canvas(WINDOW_WIDTH, WINDOW_HEIGHT);
-		graphicsContext = canvas.getGraphicsContext2D();
+
 		root.getChildren().add(canvas);
 		Scene scene = new Scene(root);
+		primaryStage.setScene(scene);
+		primaryStage.show();
 }
+}
+
