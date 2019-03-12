@@ -26,7 +26,7 @@ public class Grid {
 	public boolean foundFood(Snake snake) {
 		boolean isIntersected = false;
 
-		if (snake.getHeadLocation().equals(food.getLocation())) {
+		if (snake.getHeadLocation2().equals(food.getLocation())) {
 			isIntersected = true;
 		}
 
