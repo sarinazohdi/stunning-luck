@@ -69,7 +69,7 @@ public class window2 extends Application {
             System.out.println(square.getTitle());
         } */
        
-
+/*
         for(int i = 0; i<6;i++){
             Label label = new Label(randomBoard.get(i).getTitle());
             label.setTextFill(Color.WHITE);
@@ -79,7 +79,7 @@ public class window2 extends Application {
             
             root.getChildren().add(label);
 
-        }
+        } */
 
         root.getChildren().add(prizeBox(GRID, GRID, 4 *GRID, 4 *GRID));
 
@@ -89,7 +89,7 @@ public class window2 extends Application {
        
         root.getChildren().add(highlighter);
 
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1000),
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(500),
         new EventHandler<ActionEvent>() {
             
             @Override
@@ -109,6 +109,31 @@ public class window2 extends Application {
         ));
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
+
+        for(int i = 0; i<20;i++){
+            Label label = new Label(randomBoard.get(i).getTitle());
+            label.setTextFill(Color.WHITE);
+            label.setAlignment(Pos.BASELINE_CENTER);
+            if (i >=0 && i <= 5){
+                label.setLayoutX((i+0.5)*GRID);
+                label.setLayoutY((0.5*GRID));
+            }
+            else if (i >= 6 && i <= 9) {
+                label.setLayoutX(0.5*GRID);
+                label.setLayoutY((i - 5 + 0.5) * GRID);
+            }
+            else if (i >= 10 && i <= 13) {
+                label.setLayoutX(5.5*GRID);
+                label.setLayoutY((i - 9 + 0.5) * GRID);
+            }
+            else if (i >= 14 && i < 20) {
+                label.setLayoutX((i - 14 + 0.5) *GRID);
+                label.setLayoutY(5.5 * GRID);
+            }
+            
+            root.getChildren().add(label);
+
+        }
 
     }
 
