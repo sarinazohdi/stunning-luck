@@ -43,6 +43,12 @@ public class SnakeDemo extends Application {
     for (int y = 0; y < WINDOW_HEIGHT; y += PIXEL_SIZE) {
     	graphicsContext.strokeLine(0, y, y + WINDOW_WIDTH, y);
     }
+		
+	  Rectangle rectangle= new Rectangle(100, 100, 100,100);
+            rectangle.setFill(Color.RED);
+            rectangle.setStrokeType(StrokeType.INSIDE);
+            rectangle.setStrokeWidth(2);
+            root.getChildren().add(rectangle);
 
     primaryStage.setTitle("Snake");
 
