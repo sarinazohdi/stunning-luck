@@ -265,7 +265,6 @@ public class PlinkoGui extends Application {
                     dy = 0;
                     horizontalVelocity = 0;
                     giveSpinsToPlayer(droppedBall, bounds, player);
-                    System.out.println(spins.getSpinsFromPlinko());
                 }
                 // reverses the velocity of the ball if it hits either sides of the window to keep it on screen
                 if ((droppedBall.getLayoutX() >= (bounds.getMaxX() - droppedBall.getRadius())) || (droppedBall.getLayoutX() <= (bounds.getMinX() + droppedBall.getRadius()))){
