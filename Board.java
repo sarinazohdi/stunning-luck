@@ -11,11 +11,12 @@ public class Board{
     private Random r = new Random();
     private ArrayList<Square> gameboard = new ArrayList<Square>();
 
-    
+    /* Method to add Square objects to the board individually */
     public void addSquare(Square square) {
         gameboard.add(square);
     }
 
+    /* method to generate the initial board with 100 objects of the  Square class */
     public void populateBoard(){
         for (int i = 1; i <= 100; i++) {
             if (i > 0 && i <=10) {
@@ -61,6 +62,8 @@ public class Board{
  
         }
     }
+    
+    /* method to return the board list */
     public ArrayList<Square> getList(){
         ArrayList<Square> newBoard = new ArrayList<Square>();
         for (Square square: newBoard){
@@ -69,6 +72,8 @@ public class Board{
         return newBoard;
     }
 
+    /* method that pulls 20 random items from the main board list to pull a single randomized item for the player
+        returns arrayList of 20 items*/
     public ArrayList<Square> RandomizeList(ArrayList<Square> al){
         ArrayList<Square> randomBoard = new ArrayList<Square>(); 
         for (int j = 1; j <= 20; j++){
