@@ -1,3 +1,4 @@
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -129,9 +130,6 @@ public class PlinkoGui extends Application {
         });         
     }
 
-    public static void main(String[] args){
-        launch(args);
-    }
     /**
      * @param obj
      * @param obj2
@@ -339,7 +337,6 @@ public class PlinkoGui extends Application {
     }
 
     public int getSpinsFromPlayer(){
-        System.out.println(spins.getSpinsFromPlinko());
         return spins.getSpinsFromPlinko();
     }
 
