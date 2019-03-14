@@ -26,7 +26,7 @@ import java.util.Random;
 
 /**
  * The main class for the spinning prize board of the Stunning Luck game
- * @author 
+ * @author
  * - Doug Comperen
  * - Matthew Forman
  * - Sarina Zohdi
@@ -38,13 +38,13 @@ public class window2 extends Application {
     public static final int GRID = 150; // sets a static variable that is used to calculate placement of items
 
     private  Rectangle highlighter = currentSelection(random()); // variable to call the random highlight
-    public static void main(String[] args) {
-        launch(args);
-    }
+    //public static void main(String[] args) {
+      //  launch(args);
+    //}
 
 /**
  * Builds the main gameboard and positions each element and label
- * @author 
+ * @author
  * - Doug Comperen
  * - Matthew Forman
  * - Sarina Zohdi
@@ -61,7 +61,7 @@ public class window2 extends Application {
         Board board = new Board();
         board.populateBoard();
         ArrayList<Square> randomBoard = board.RandomizeList(board.getList()); // gets list of 20 random objects from the board class
-        
+
         /*
         each line adds an individual rectangle object to create the 20 boxes around the window.
         */
@@ -85,32 +85,32 @@ public class window2 extends Application {
         root.getChildren().add(prizeBox(2 * GRID, 5 * GRID, GRID, GRID));
         root.getChildren().add(prizeBox(3 * GRID, 5 * GRID, GRID, GRID));
         root.getChildren().add(prizeBox(4 * GRID, 5 * GRID, GRID, GRID));
-    
+
 
         root.getChildren().add(prizeBox(GRID, GRID, 4 *GRID, 4 *GRID));
 
-        
 
-        
-        
+
+
+
         primaryStage.show();
-       
+
         root.getChildren().add(highlighter);
 
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(500),
         new EventHandler<ActionEvent>() {
-            
+
             @Override
             public void handle(ActionEvent event){
-                
+
                 root.getChildren().remove(highlighter);
                 highlighter = currentSelection(random());
                 root.getChildren().add(highlighter);
-                
+
             }
 
         }
-        
+
         ));
         timeline.setCycleCount(15);
 
@@ -142,7 +142,7 @@ public class window2 extends Application {
                 label.setLayoutX((i - 14 + 0.25) *GRID);
                 label.setLayoutY(5.5 * GRID);
             }
-            
+
             root.getChildren().add(label);
 
         }
@@ -156,7 +156,7 @@ public class window2 extends Application {
  * @param width the total width of the rectangle
  * @param height the height of the rectangle
  * @return prize, a rectangle object
- * @author 
+ * @author
  * - Doug Comperen
  * - Matthew Forman
  * - Sarina Zohdi
@@ -179,7 +179,7 @@ public class window2 extends Application {
  * prizebox creates a rectangle object to pass to the stage
  * @param choice the index of the object being refenced from the arraylist
  * @return selection, a rectangle object
- * @author 
+ * @author
  * - Doug Comperen
  * - Matthew Forman
  * - Sarina Zohdi
@@ -303,7 +303,7 @@ public class window2 extends Application {
     /**
  * random creates a random number between 0 and 19. It is used to randomly select a prize from the arraylist
  * @return a random int between 0 and 19 inclusive
- * @author 
+ * @author
  * - Doug Comperen
  * - Matthew Forman
  * - Sarina Zohdi
@@ -318,11 +318,10 @@ public class window2 extends Application {
 
     }
 
-    
+
 
 
 
 
 
 }
-
