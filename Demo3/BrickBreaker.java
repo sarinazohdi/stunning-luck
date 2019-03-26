@@ -110,7 +110,17 @@ public class BrickBreaker extends Application {
         message.setLayoutX(190);
         message.setLayoutY(170);
 
+        Button mainMenu = new Button("Main Menu");
+        mainMenu.setLayoutX(300);
+        mainMenu.setLayoutY(300);
+        mainMenu.setOnAction(new EventHandler<ActionEvent>(){
+            public void handle(ActionEvent a){
+                primaryStage.close();
+            }
+        });
+
         root1.getChildren().add(message);
+        root1.getChildren().add(mainMenu);
         root1.setStyle("-fx-background-color: #000000;");
         Scene gameOver = new Scene(root1,600,450);
 
@@ -243,5 +253,29 @@ public class BrickBreaker extends Application {
         pauseStage.setTitle("Pause");
         pauseStage.setScene(scene);
         pauseStage.show();
+    }
+
+    public Scene afterBallReachBottom(Stage primaryStage, Player player1){
+        Pane endPane = new Pane();
+        Scene endScene = new Scene(endPane, 623, 450);
+
+        Label spinsEarned = new Label("Congratulations! You earned " + player1.getSpins()+ " spins!");
+        spinsEarned.setLayoutX(200);
+        spinsEarned.setLayoutY(150);
+
+        Button mainMenu = new Button("Main Menu");
+        mainMenu.setLayoutX(300);
+        mainMenu.setLayoutY(300);
+        mainMenu.setOnAction(new EventHandler<ActionEvent>(){
+            public void handle(ActionEvent a){
+                primaryStage.close();
+            }
+        });
+
+        endPane.getChildren().add(spinsEarned);
+        endPane.getChildren().add(mainMenu);
+        
+
+        return endScene;
     }
 }
