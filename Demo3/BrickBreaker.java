@@ -28,6 +28,7 @@ public class BrickBreaker extends Application {
     private Rectangle paddle = new Rectangle(70f,20f,Color.RED);
     private Circle ball = new Circle(10f,Color.MAGENTA);
     private ArrayList<Rectangle> blocks = new ArrayList<Rectangle>();
+    private Timeline timeline;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -139,7 +140,7 @@ public class BrickBreaker extends Application {
          * the timeline is used for collision detection as well
          * as the game animations
          */
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(20),
+        timeline = new Timeline(new KeyFrame(Duration.millis(20),
                 new EventHandler<ActionEvent>() {
 
         	double dx = 4; //change in x
@@ -185,6 +186,8 @@ public class BrickBreaker extends Application {
                         if (score == 16){
                             userSpins.setText("You've earned " + getScore() + " spins!");
                             primaryStage.setScene(gameOver);
+                            timeline.pause();
+                            MainMethod.player1.addSpins(getScore());
                         }
                       }
                       
@@ -200,6 +203,9 @@ public class BrickBreaker extends Application {
                 if(ball.getLayoutY() >= (bounds.getMaxY() - ball.getRadius())){
                     userSpins.setText("You've earned " + getScore() + " spins!");
                     primaryStage.setScene(gameOver);
+                    timeline.pause();
+                    MainMethod.player1.addSpins(getScore());
+                    score = 0;
 
                 }
 

@@ -288,6 +288,8 @@ public class PlinkoGui extends Application {
                     timeline.pause();
                     Scene endScene = afterBallReachBottom(primaryStage, player);
                     primaryStage.setScene(endScene);
+                    MainMethod.player1.addSpins(player.getSpins());
+                    spins = 0;
                     
                 }
                 // reverses the velocity of the ball if it hits either sides of the window to keep it on screen
@@ -384,7 +386,7 @@ public class PlinkoGui extends Application {
             }
         });
 
-        Button endGameButton = new Button("End Game");
+        Button endGameButton = new Button("Save and Exit");
         endGameButton.setLayoutX(150);
         endGameButton.setLayoutY(100);
         endGameButton.setOnAction(new EventHandler<ActionEvent>(){
@@ -393,6 +395,8 @@ public class PlinkoGui extends Application {
                     //timeline.play();
                 pauseStage.close();
                 primaryStage.close();
+                FileIO.write(MainMethod.player1.getName(), MainMethod.player1.getScore());
+
             }
         });
 

@@ -18,7 +18,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.control.TextField;
 
 public class MainMethod extends Application{
-    private Player player1 = new Player("John Doe");
+    public static Player player1 = new Player("John Doe");
     private int namesInputCount = 0;
 
     public void start(Stage primaryStage){
@@ -73,7 +73,7 @@ public class MainMethod extends Application{
                 }catch(Exception e){
                     e.printStackTrace();
                 }
-                player1.addSpins(PlinkoGui.getSpinsFromPlinko());
+                //player1.addSpins(PlinkoGui.getSpinsFromPlinko());
             }
         });
 
@@ -88,7 +88,7 @@ public class MainMethod extends Application{
                 }catch(Exception e){
                     e.printStackTrace();
                 }
-                player1.addSpins(BrickBreaker.getScore());
+                //player1.addSpins(BrickBreaker.getScore());
             }
         });
         Button boardButton = new Button("Board");
