@@ -1,4 +1,3 @@
-
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -128,7 +127,7 @@ public class PlinkoGui extends Application {
         // checks to see if left or right key is pressed to adjust initla position of ball or if space is pressed to initiate the drop ball sequence
         scene.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> {
             if(key.getCode()==KeyCode.SPACE) {
-                dropBall(droppedBall, bounds, pegs, player);
+                dropBall(droppedBall, bounds, pegs, player, primaryStage);
             }
             if(key.getCode()==KeyCode.LEFT && droppedBall.getLayoutX() > (droppedBall.getRadius() + 50)){
                 droppedBall.setLayoutX(droppedBall.getLayoutX() - 15);
@@ -145,6 +144,7 @@ public class PlinkoGui extends Application {
                 
             }
         });  
+
         
         //return scene;
     }
@@ -262,7 +262,7 @@ public class PlinkoGui extends Application {
      * through a field of pegs, as would happen in a real version of plinko. 
      * it is through this action that the player recieves a score. 
      */
-    public void dropBall(Circle droppedBall, Bounds bounds, ArrayList<Circle> pegs, Player player){
+    public void dropBall(Circle droppedBall, Bounds bounds, ArrayList<Circle> pegs, Player player, Stage primaryStage){
 
             timeline = new Timeline(new KeyFrame(Duration.millis(30), new EventHandler<ActionEvent>(){
             double dy = 1.58;
@@ -284,6 +284,10 @@ public class PlinkoGui extends Application {
                     dy = 0;
                     horizontalVelocity = 0;
                     giveSpinsToPlayer(droppedBall, bounds, player);
+                    timeline.pause();
+                    Scene endScene = afterBallReachBottom(primaryStage, player);
+                    primaryStage.setScene(endScene);
+                    
                 }
                 // reverses the velocity of the ball if it hits either sides of the window to keep it on screen
                 if ((droppedBall.getLayoutX() >= (bounds.getMaxX() - droppedBall.getRadius())) || (droppedBall.getLayoutX() <= (bounds.getMinX() + droppedBall.getRadius()))){
@@ -397,5 +401,29 @@ public class PlinkoGui extends Application {
         pauseStage.setTitle("Pause");
         pauseStage.setScene(scene);
         pauseStage.show();
+    }
+
+    public Scene afterBallReachBottom(Stage primaryStage, Player player1){
+        Pane endPane = new Pane();
+        Scene endScene = new Scene(endPane, 600, 600);
+
+        Label spinsEarned = new Label("Congratulations! You earned " + player1.getSpins()+ " spins!");
+        spinsEarned.setLayoutX(100);
+        spinsEarned.setLayoutY(150);
+
+        Button mainMenu = new Button("Main Menu");
+        mainMenu.setLayoutX(200);
+        mainMenu.setLayoutY(300);
+        mainMenu.setOnAction(new EventHandler<ActionEvent>(){
+            public void handle(ActionEvent a){
+                primaryStage.close();
+            }
+        });
+
+        endPane.getChildren().add(spinsEarned);
+        endPane.getChildren().add(mainMenu);
+        
+
+        return endScene;
     }
 }
