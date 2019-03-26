@@ -1,3 +1,4 @@
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -43,7 +44,7 @@ public class PlinkoGui extends Application {
     private ArrayList<String> spinEarnedArray = new ArrayList<String>();
     private Player player = new Player("johnDoe"); 
     //private Scene scene = new Scene();
-    private static ManageSpinsForPlinko spins = new ManageSpinsForPlinko();
+    private static int spins;
     private Timeline timeline;
 
 
@@ -215,39 +216,39 @@ public class PlinkoGui extends Application {
     public void giveSpinsToPlayer(Circle droppedBall, Bounds bounds, Player player) {
 
         if (droppedBall.getLayoutX() <= (bounds.getMaxX()/9)){
-            spins.setSpinsFromPlinko(2);
+            spins = 2;
             player.setSpins(2);
         }
         else if (droppedBall.getLayoutX() > bounds.getMaxX()/9 && droppedBall.getLayoutX() <= (2*bounds.getMaxX())/9){
-            spins.setSpinsFromPlinko(3);
+            spins = 4;
             player.setSpins(4);
         }
         else if (droppedBall.getLayoutX() > (2*bounds.getMaxX())/9 && droppedBall.getLayoutX() <= (3*bounds.getMaxX())/9){
-            spins.setSpinsFromPlinko(4);
+            spins = 3;
             player.setSpins(3);
         }
         else if (droppedBall.getLayoutX() > (3*bounds.getMaxX())/9 && droppedBall.getLayoutX() <= (4*bounds.getMaxX())/9){
-            spins.setSpinsFromPlinko(1);
+            spins = 1;
             player.setSpins(1);
         }
         else if (droppedBall.getLayoutX() > (4*bounds.getMaxX())/9 && droppedBall.getLayoutX() <= (5*bounds.getMaxX())/9){
-            spins.setSpinsFromPlinko(5);
+            spins = 5;
             player.setSpins(5);
         }
         else if (droppedBall.getLayoutX() > (5*bounds.getMaxX())/9 && droppedBall.getLayoutX() <= (6*bounds.getMaxX())/9){
-            spins.setSpinsFromPlinko(1);
+            spins = 1;
             player.setSpins(1);
         }
         else if (droppedBall.getLayoutX() > (6*bounds.getMaxX())/9 && droppedBall.getLayoutX() <= (7*bounds.getMaxX())/9){
-            spins.setSpinsFromPlinko(4);
+            spins = 3;
             player.setSpins(3);
         }
         else if (droppedBall.getLayoutX() > (7*bounds.getMaxX())/9 && droppedBall.getLayoutX() <= (8*bounds.getMaxX())/9){
-            spins.setSpinsFromPlinko(3);
+            spins = 4;
             player.setSpins(4);
         }
         else if (droppedBall.getLayoutX() > (8*bounds.getMaxX())/9 && droppedBall.getLayoutX() <= (9*bounds.getMaxX())/9){
-            spins.setSpinsFromPlinko(2);
+            spins = 2;
             player.setSpins(2);
         }
 
@@ -360,11 +361,12 @@ public class PlinkoGui extends Application {
     }
 
     public int getSpinsFromPlayer(){
-        return spins.getSpinsFromPlinko();
+        return spins;
     }
 
-    public int getSpinsFromPlinko(){
-        return spins.getSpinsFromPlinko();
+    public static int getSpinsFromPlinko(){
+        System.out.println(spins);
+        return spins;
     }
 
     public void pause(Stage pauseStage, Stage primaryStage){

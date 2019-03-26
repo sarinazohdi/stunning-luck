@@ -9,6 +9,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.util.Duration;
 import javafx.scene.text.Font;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
@@ -53,6 +56,12 @@ public class MainMethod extends Application{
         highScores.setLayoutX(800);
         highScores.setLayoutY(30);
 
+        Label displaySpins = new Label("You've earned " + player1.getSpins() + " spins so far!");
+        displaySpins.setFont(new Font("Tahoma", 30));
+        displaySpins.setTextFill(Color.GREEN);
+        displaySpins.setLayoutX(350);
+        displaySpins.setLayoutY(200);
+
         Button plinkoButton = new Button("Plinko");
         plinkoButton.setLayoutX(50);
         plinkoButton.setLayoutY(300);
@@ -64,7 +73,7 @@ public class MainMethod extends Application{
                 }catch(Exception e){
                     e.printStackTrace();
                 }
-                player1.addSpins(BrickBreaker.getScore());
+                player1.addSpins(PlinkoGui.getSpinsFromPlinko());
             }
         });
 
@@ -101,6 +110,11 @@ public class MainMethod extends Application{
         Button snakeButton = new Button("Snake");
         snakeButton.setLayoutX(50);
         snakeButton.setLayoutY(400);
+        snakeButton.setOnAction(new EventHandler<ActionEvent>(){
+            public void handle(ActionEvent t){
+                player1.setSpins(1);
+            }
+        });
         
         Button shooterButton = new Button("Shooter");
         shooterButton.setLayoutX(50);
@@ -114,13 +128,22 @@ public class MainMethod extends Application{
         root.getChildren().add(highScores);
         root.getChildren().add(nameOfGame);
         root.getChildren().add(playerName);
+        root.getChildren().add(displaySpins);
 
 
 
         primaryStage.setTitle("Stunning Luck");
         primaryStage.setScene(scene);
         primaryStage.show();
-
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(30), 
+            new EventHandler<ActionEvent>(){
+                public void handle(ActionEvent p){
+                    displaySpins.setText("You've earned " + player1.getSpins() + " spins so far!");
+                }
+            }));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+        
     }
     public static void main(String[] args){
 

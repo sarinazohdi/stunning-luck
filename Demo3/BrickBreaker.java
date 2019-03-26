@@ -119,8 +119,15 @@ public class BrickBreaker extends Application {
             }
         });
 
+        Label userSpins = new Label("You've earned " + getScore() + " spins!");
+        userSpins.setTextFill(Color.RED);
+        userSpins.setFont(new Font("Cambria", 25));
+        userSpins.setLayoutX(200);
+        userSpins.setLayoutY(350);
+
         root1.getChildren().add(message);
         root1.getChildren().add(mainMenu);
+        root1.getChildren().add(userSpins);
         root1.setStyle("-fx-background-color: #000000;");
         Scene gameOver = new Scene(root1,600,450);
 
@@ -173,11 +180,10 @@ public class BrickBreaker extends Application {
                 for (Rectangle block:blocks){
                     if(ball.getBoundsInParent().intersects(block.getBoundsInParent())){
                         root.getChildren().remove(block);
-                        block.setLayoutX(1000);
-                        block.setLayoutY(1000);
                         score++;
-                        
+                        blocks.remove(block);
                         if (score == 16){
+                            userSpins.setText("You've earned " + getScore() + " spins!");
                             primaryStage.setScene(gameOver);
                         }
                       }
@@ -192,7 +198,7 @@ public class BrickBreaker extends Application {
                  */
 
                 if(ball.getLayoutY() >= (bounds.getMaxY() - ball.getRadius())){
-
+                    userSpins.setText("You've earned " + getScore() + " spins!");
                     primaryStage.setScene(gameOver);
 
                 }
@@ -222,6 +228,7 @@ public class BrickBreaker extends Application {
      * @return the score achieved
      */
     public static int getScore(){
+        //int spinsEarned = score/4;
         return score;
     }
 
@@ -260,28 +267,5 @@ public class BrickBreaker extends Application {
         pauseStage.setScene(scene);
         pauseStage.show();
     }
-
-    public Scene afterBallReachBottom(Stage primaryStage, Player player1){
-        Pane endPane = new Pane();
-        Scene endScene = new Scene(endPane, 623, 450);
-
-        Label spinsEarned = new Label("Congratulations! You earned " + player1.getSpins()+ " spins!");
-        spinsEarned.setLayoutX(200);
-        spinsEarned.setLayoutY(150);
-
-        Button mainMenu = new Button("Main Menu");
-        mainMenu.setLayoutX(300);
-        mainMenu.setLayoutY(300);
-        mainMenu.setOnAction(new EventHandler<ActionEvent>(){
-            public void handle(ActionEvent a){
-                primaryStage.close();
-            }
-        });
-
-        endPane.getChildren().add(spinsEarned);
-        endPane.getChildren().add(mainMenu);
-        
-
-        return endScene;
-    }
+    
 }
