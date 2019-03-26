@@ -174,6 +174,10 @@ public class BrickBreaker extends Application {
                     if(ball.getBoundsInParent().intersects(block.getBoundsInParent())){
                         root.getChildren().remove(block);
                         score++;
+                        blocks.remove(block);
+                        if (score == 16){
+                            primaryStage.setScene(gameOver);
+                        }
                       }
                       
 
