@@ -181,8 +181,9 @@ public class BrickBreaker extends Application {
                 for (Rectangle block:blocks){
                     if(ball.getBoundsInParent().intersects(block.getBoundsInParent())){
                         root.getChildren().remove(block);
+                        block.setLayoutX(1000);
+                        block.setLayoutY(1000);
                         score++;
-                        blocks.remove(block);
                         if (score == 16){
                             userSpins.setText("You've earned " + getScore() + " spins!");
                             primaryStage.setScene(gameOver);
@@ -190,10 +191,6 @@ public class BrickBreaker extends Application {
                             MainMethod.player1.addSpins(getScore());
                         }
                       }
-                      
-
-
-
                 }
                 /**
                  * Switches to the game over
