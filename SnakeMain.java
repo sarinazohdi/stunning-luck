@@ -11,16 +11,19 @@ import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
+import javafx.scene.control.Label;
+import javafx.scene.control.Button;
+import javafx.event.EventHandler;
 /**
 * The SnakeMain class uses javafx to recreate a simple snake game.
 * Code referenced from:
-* Title: JavaFX Game: Snake Classic
+* Title: JavaFX: Snake
 * Author: Almas B.
-* @author
-* T08-GR04
 */
 
 public class SnakeMain extends Application {
+
+    //public int score1 = 0;
 
     /**A direction can be up, down, left, or right.*/
     public enum Direction {
@@ -95,6 +98,20 @@ public class SnakeMain extends Application {
 
         moved = true;
 
+        /** Gameover screen. Displays the score. */
+        Pane rootG = new Pane();
+        Label message = new Label("Game over");
+        message.setLayoutX(100);
+        message.setLayoutY(100);
+        //public int fscore = snake.size() - 1;
+        Label score = new Label("Your score is: " + Integer.toString(snake.size()));
+        score.setLayoutX(100);
+        score.setLayoutY(150);
+
+        rootG.getChildren().add(message);
+        rootG.getChildren().add(score);
+        Scene gameOver = new Scene(rootG,300,300);
+
         /** Since we removed one block, add one block back. */
         if(toRemove)
           snake.add(0, tail);
@@ -103,6 +120,7 @@ public class SnakeMain extends Application {
         for (Node rect : snake) {
           if(rect != tail && tail.getTranslateX() == rect.getTranslateX() && tail.getTranslateY() == rect.getTranslateY()) {
             restartGame();
+            //primaryStage.setScene(gameOver);
             break;
           }
         }
@@ -110,6 +128,7 @@ public class SnakeMain extends Application {
         /** Collision detection - walls. Restart game condition is true. */
         if(tail.getTranslateX() < 0 || tail.getTranslateX() >= WINDOW_W || tail.getTranslateY() < 0 || tail.getTranslateY() >= WINDOW_H) {
           restartGame();
+          //primaryStage.setScene(gameOver);
         }
 
         /** Check if the snake hits food. ("tail" (head) coordinates = food coordinates) */
@@ -140,13 +159,18 @@ public class SnakeMain extends Application {
       startGame();
     }
 
-    /** Private method to stop the game. */
+    /** Private method to stop the game.Displays the score after the game is over. */
     private void stopGame() {
+      //private int score;
       running = false;
       timeline.stop();
       snake.clear();
     }
-
+    /*
+    public static int getScore(){
+      return fscore;
+    }
+    */
     /** Private method to start the game. */
     private void startGame() {
       /** Default direction; snake will start running right. */
@@ -184,6 +208,16 @@ public class SnakeMain extends Application {
         }
         moved = false;
       });
+
+  /* Button to end the game. */
+      Button endGame = new Button("End Game");
+      endGame.setLayoutX(100);
+      endGame.setLayoutY(100);
+      //endGame.setOnAction(new EventHandler<ActionEvent>(){
+        //running = false;
+        //primaryStage.close();
+      //}
+
 
       primaryStage.setTitle("Snake Game");
       primaryStage.setScene(scene);
