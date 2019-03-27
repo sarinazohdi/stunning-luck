@@ -154,6 +154,7 @@ public class window2 extends Application {
         spin.setPrefSize(300, 100);
         spin.setOnAction(click -> {
             if (spins > 0){
+            MainMethod.player1.setSpins(MainMethod.player1.getSpins() - 1);
             timeline.play();
             
             //MainMethod.player1.addScore(randomBoard.get(returnprize).getValue());
