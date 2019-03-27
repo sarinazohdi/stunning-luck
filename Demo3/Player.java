@@ -46,7 +46,7 @@ public class Player{
         Player getterPlayer = new Player(this.name, this.numOfSpins, this.score, this.strikes);
         return getterPlayer.score;
     }
-
+    
     public int getStrikes(){
         Player getterPlayer = new Player(this.name, this.numOfSpins, this.score, this.strikes);
         return getterPlayer.strikes;
@@ -68,6 +68,10 @@ public class Player{
         this.numOfSpins += addedSpins;
     }
 
+    public void addScore(int addedScore){
+        this.score += addedScore;
+    }
+    
     public void setScore(int newScore){
         this.score = newScore;
     }
@@ -80,8 +84,8 @@ public class Player{
         this.miniGameCount = nMiniGameCount;
     }
 
-    public void addMiniGameCount(int i){
-        this.miniGameCount += i;
+    public void addMiniGameCount(){
+        this.miniGameCount = this.miniGameCount +1;
     }
 
     public void addAward(Square newAward){
@@ -92,7 +96,7 @@ public class Player{
         ArrayList<Square> getterAwards = new ArrayList<Square>();
         for (Square a : this.awards){
             getterAwards.add(a);
-        }
+        } 
 
         return getterAwards;
     }
