@@ -15,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
+import javafx.animation.Animation;
 /**
 * The SnakeMain class uses javafx to recreate a simple snake game.
 * Code referenced from:
@@ -41,12 +42,12 @@ public class SnakeMain extends Application {
     private boolean moved = false;
     private boolean running = false;
 
-    private Timeline timeline = new Timeline();
+    private Timeline timeline;
 
     /** list to keep track of the snake location and movements. */
     private ObservableList<Node> snake;
 
-    private Parent createContent() {
+    private Parent createContent(Stage primaryStage) {
       Pane root = new Pane();
       root.setPrefSize(WINDOW_W, WINDOW_H);
 
@@ -64,7 +65,8 @@ public class SnakeMain extends Application {
       food.setTranslateY((int)(Math.random() * (WINDOW_H - RECT_SIZE)) / RECT_SIZE * RECT_SIZE);
 
       /** Lower the duration value to increase the difficulty of the game; snake will move faster. */
-      KeyFrame snakeframe = new KeyFrame(Duration.seconds(0.3), event -> {
+
+      timeline = new Timeline(new KeyFrame(Duration.seconds(0.3), event -> {
         if(!running)
           return;
 
@@ -99,19 +101,7 @@ public class SnakeMain extends Application {
 
         moved = true;
 
-        /** Gameover screen. Displays the score. */
-        Pane rootG = new Pane();
-        Label message = new Label("Game over");
-        message.setLayoutX(100);
-        message.setLayoutY(100);
-        //public int fscore = snake.size() - 1;
-        Label score = new Label("Your score is: " + Integer.toString(snake.size()));
-        score.setLayoutX(100);
-        score.setLayoutY(150);
-
-        rootG.getChildren().add(message);
-        rootG.getChildren().add(score);
-        Scene gameOver = new Scene(rootG,300,300);
+        
 
         /** Since we removed one block, add one block back. */
         if(toRemove)
@@ -120,16 +110,18 @@ public class SnakeMain extends Application {
         /** Collision detection - its own body. REMEMBER: TAIL HERE MEANS HEAD. Restart game if condition is true.*/
         for (Node rect : snake) {
           if(rect != tail && tail.getTranslateX() == rect.getTranslateX() && tail.getTranslateY() == rect.getTranslateY()) {
-            restartGame();
+            //restartGame();
             //primaryStage.setScene(gameOver);
+            timeline.stop();
             break;
           }
         }
 
         /** Collision detection - walls. Restart game condition is true. */
         if(tail.getTranslateX() < 0 || tail.getTranslateX() >= WINDOW_W || tail.getTranslateY() < 0 || tail.getTranslateY() >= WINDOW_H) {
-          restartGame();
+          //restartGame();
           //primaryStage.setScene(gameOver);
+          timeline.stop();
         }
 
         /** Check if the snake hits food. ("tail" (head) coordinates = food coordinates) */
@@ -147,9 +139,34 @@ public class SnakeMain extends Application {
           snake.add(rect);
 
         }
-      });
 
-      timeline.getKeyFrames().add(snakeframe);
+        if (timeline.getStatus() == Animation.Status.STOPPED) {
+          /** Gameover screen. Displays the score. */
+          Pane rootG = new Pane();
+          Label message = new Label("Game over");
+          message.setLayoutX(100);
+          message.setLayoutY(100);
+          //public int fscore = snake.size() - 1;
+          Label spins = new Label("You've earned this many spins: " + Integer.toString(snake.size() - 1));
+          spins.setLayoutX(75);
+          spins.setLayoutY(150);
+
+          Button mainMenu = new Button("Main Menu");
+          mainMenu.setLayoutX(100);
+          mainMenu.setLayoutY(225);
+          mainMenu.setOnAction(new EventHandler<ActionEvent>(){
+              public void handle(ActionEvent a){
+                  primaryStage.close();
+              }
+          });
+  
+          rootG.getChildren().add(message);
+          rootG.getChildren().add(spins);
+          rootG.getChildren().add(mainMenu);
+          Scene gameOver = new Scene(rootG,300,300);
+          primaryStage.setScene(gameOver);
+        }
+      }));
       timeline.setCycleCount(Timeline.INDEFINITE);
 
       root.getChildren().addAll(food, snakeB);
@@ -186,7 +203,7 @@ public class SnakeMain extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-      Scene scene = new Scene(createContent());
+      Scene scene = new Scene(createContent(primaryStage));
       scene.setOnKeyPressed(event -> {
         if(!moved)
           return;
@@ -217,8 +234,11 @@ public class SnakeMain extends Application {
             pause(pauseStage, primaryStage);
 
         }
+
         moved = false;
       });
+
+      
 
   /* Button to end the game. */
       Button endGame = new Button("End Game");
