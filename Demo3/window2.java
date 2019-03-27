@@ -105,9 +105,44 @@ public class window2 extends Application {
         save.setLayoutX(175);
         save.setLayoutY(175);
         save.setOnAction(click -> {
+            Stage pauseStage = new Stage();
+           
+                Group groot = new Group();
+                Scene pscene = new Scene(groot, 300, 150);
+        
+                Button resumeButton = new Button("Resume");
+                resumeButton.setLayoutX(50);
+                resumeButton.setLayoutY(100);
+                resumeButton.setOnAction(new EventHandler<ActionEvent>(){
+                    public void handle(ActionEvent a){
 
+                        pauseStage.close();
+                    }
+                });
+        
+                Button endGameButton = new Button("Main Menu");
+                endGameButton.setLayoutX(150);
+                endGameButton.setLayoutY(100);
+                endGameButton.setOnAction(new EventHandler<ActionEvent>(){
+                    public void handle(ActionEvent a){
+                        pauseStage.close();
+                        primaryStage.close();
+        
+                    }
+                });
+        
+                groot.getChildren().add(resumeButton);
+                groot.getChildren().add(endGameButton);
+                
+        
+                pauseStage.setTitle("Pause");
+                pauseStage.setScene(pscene);
+                pauseStage.show();
+            
 
         });
+
+        root.getChildren().add(save);
         //ImageView wins = wins(returnprize, randomBoard);
         Label spinsRemaining = new Label("Spins Remaining " + Integer.toString(spins));
         spinsRemaining.setLayoutX(375);
@@ -394,6 +429,8 @@ public class window2 extends Application {
 
 
     }
+
+
 
     
 
