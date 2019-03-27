@@ -101,6 +101,13 @@ public class window2 extends Application {
         
         
         primaryStage.show();
+        Button save = new Button("Save & Quit");
+        save.setLayoutX(175);
+        save.setLayoutY(175);
+        save.setOnAction(click -> {
+
+
+        });
         //ImageView wins = wins(returnprize, randomBoard);
         Label spinsRemaining = new Label("Spins Remaining " + Integer.toString(spins));
         spinsRemaining.setLayoutX(375);
