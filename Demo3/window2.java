@@ -67,11 +67,11 @@ public class window2 extends Application {
         board.populateBoard();
         ArrayList<Square> randomBoard = board.RandomizeList(board.getList()); // gets list of 20 random objects from the board class
         int counter = 0;
-        ImageView wins = wins(returnprize, randomBoard);
+        //ImageView wins = wins(returnprize, randomBoard);
         
         /*
         each line adds an individual rectangle object to create the 20 boxes around the window.
-        */
+        
         root.getChildren().add(prizeBox(0, 0, GRID, GRID));
         root.getChildren().add(prizeBox(GRID, 0, GRID, GRID));
         root.getChildren().add(prizeBox(2 * GRID, 0, GRID, GRID));
@@ -92,7 +92,7 @@ public class window2 extends Application {
         root.getChildren().add(prizeBox(2 * GRID, 5 * GRID, GRID, GRID));
         root.getChildren().add(prizeBox(3 * GRID, 5 * GRID, GRID, GRID));
         root.getChildren().add(prizeBox(4 * GRID, 5 * GRID, GRID, GRID));
-    
+        */
 
         //root.getChildren().add(prizeBox(GRID, GRID, 4 *GRID, 4 *GRID));
 
@@ -121,7 +121,7 @@ public class window2 extends Application {
             @Override
             public void handle(ActionEvent event){
                 
-                root.getChildren().remove(wins);
+                //root.getChildren().remove(wins);
                 root.getChildren().remove(highlighter);
                 highlighter = currentSelection(random());
                 root.getChildren().add(highlighter);
@@ -146,7 +146,11 @@ public class window2 extends Application {
         timeline.setCycleCount(15);
         timeline.setOnFinished(event -> {        
             MainMethod.player1.addScore(randomBoard.get(returnprize).getValue());
+            spins += randomBoard.get(returnprize).getSpins();
+            MainMethod.player1.setSpins(spins);
+            
             currentScore.setText("Current cash and prize value: " + Integer.toString(MainMethod.player1.getScore()));
+            
         });
         Button spin = new Button("SPIN");
         spin.setLayoutX(300);
@@ -154,15 +158,13 @@ public class window2 extends Application {
         spin.setPrefSize(300, 100);
         spin.setOnAction(click -> {
             if (spins > 0){
-            MainMethod.player1.setSpins(MainMethod.player1.getSpins() - 1);
             timeline.play();
-            
-            //MainMethod.player1.addScore(randomBoard.get(returnprize).getValue());
             spins -= 1;
             spinsRemaining.setText("Spins Remaining " + Integer.toString(spins));
             
+            
             }
-            else if (spins == 0){
+            else if (spins <= 0){
             
             }
         });
@@ -224,10 +226,10 @@ public class window2 extends Application {
  */
 
     public ImageView prizeBox(int x, int y, int width, int height) throws FileNotFoundException{
-        Rectangle prize = new Rectangle(x, y, width, height);
-        prize.setStrokeType(StrokeType.INSIDE);
-        prize.setStroke(Color.web("white", 1));
-        prize.setStrokeWidth(2);
+        //Rectangle prize = new Rectangle(x, y, width, height);
+        //prize.setStrokeType(StrokeType.INSIDE);
+        //prize.setStroke(Color.web("white", 1));
+        //prize.setStrokeWidth(2);
         Image prizePic = new Image(new FileInputStream("testimage.png"));
         ImageView prizeView = new ImageView(prizePic); 
         prizeView.setX(x); 
@@ -242,7 +244,7 @@ public class window2 extends Application {
 
 
 /**
- * prizebox creates a rectangle object to pass to the stage
+ * currentSelection creates a rectangle object to pass to the stage
  * @param choice the index of the object being refenced from the arraylist
  * @return selection, a rectangle object
  * @author 
@@ -292,33 +294,33 @@ public class window2 extends Application {
 
         }
         else if (choice == 7) {
-            x = 5 * GRID;
-            y = GRID;
+            x = 0;
+            y = 2 * GRID;
 
         }
         else if (choice == 8) {
             x = 0;
-            y = 2 * GRID;
+            y = 3 * GRID;
 
         }
         else if (choice == 9) {
-            x = 5 * GRID;
-            y = 2 * GRID;
+            x = 0;
+            y = 4 * GRID;
 
         }
         else if (choice == 10) {
-            x = 0;
-            y = 3 * GRID;
+            x = 5 * GRID;
+            y = GRID;
 
         }
         else if (choice == 11) {
             x = 5 * GRID;
-            y = 3 * GRID;
+            y = 2 * GRID;
 
         }
         else if (choice == 12) {
-            x = 0;
-            y = 4 * GRID;
+            x = 5 * GRID;
+            y = 3 * GRID;
 
         }
         else if (choice == 13) {
