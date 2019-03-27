@@ -21,43 +21,43 @@ public class Board{
         for (int i = 1; i <= 100; i++) {
             if (i > 0 && i <=10) {
 
-                gameboard.add(new Square("Strike", 0, 0 ));
+                gameboard.add(new Square("Strike", 0, 0, "strike.png" ));
             }
             else if (i > 10 && i <=20) {
-                gameboard.add(new Square("Win $5000", 5000, 0 ));
+                gameboard.add(new Square("Win $5000", 5000, 0, "5000.png" ));
             }    
             else if (i > 20 && i <=25) {
-                gameboard.add(new Square("Boat", 8000, 0 ));
+                gameboard.add(new Square("Boat", 8000, 0, "boat.png" ));
             }
             else if  (i > 25 && i <=30) {
-                gameboard.add(new Square("Hawaii Vacation", 2500, 0 ));
+                gameboard.add(new Square("Hawaii Vacation", 2500, 0, "vacation.png" ));
             }
             else if  (i > 30 && i <=45) {
-                gameboard.add(new Square("Win $100", 100, 0 ));
+                gameboard.add(new Square("Win $100", 100, 0, "100.png" ));
             }
             else if  (i > 45 && i <=55) {
-                gameboard.add(new Square("Free Spin", 0, 1 ));
+                gameboard.add(new Square("Free Spin", 0, 1, "freespin.png" ));
             }
             else if  (i > 55 && i <=60) {
-                gameboard.add(new Square("Jeep", 27000, 0 ));
+                gameboard.add(new Square("Jeep", 27000, 0, "testimage.png" ));
             }
             else if  (i > 60 && i <=65) {
-                gameboard.add(new Square("Free Coffee for a year", 700, 0 ));
+                gameboard.add(new Square("Free Coffee for a year", 700, 0, "testimage.png" ));
             }
             else if  (i > 65 && i <=75) {
-                gameboard.add(new Square("Win $100 and Sping again", 100, 1 ));
+                gameboard.add(new Square("Win $100 and Sping again", 100, 1, "testimage.png" ));
             }
             else if  (i > 75 && i <=80) {
-                gameboard.add(new Square("Lose $50", -50, 0 ));
+                gameboard.add(new Square("Lose $50", -50, 0, "testimage.png" ));
             }
             else if  (i > 80 && i <=90) {
-                gameboard.add(new Square("Mountain Bike", 250, 0 ));
+                gameboard.add(new Square("Mountain Bike", 250, 0, "testimage.png" ));
             }
             else if  (i > 90 && i <=92) {
-                gameboard.add(new Square("Trip around the world", 10000, 0 ));
+                gameboard.add(new Square("Trip around the world", 10000, 0, "testimage.png" ));
             }
             else if  (i > 92 && i <=100) {
-                gameboard.add(new Square("Win $500", 500, 0 ));
+                gameboard.add(new Square("Win $500", 500, 0, "testimage.png" ));
             }
  
         }
