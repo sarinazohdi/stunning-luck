@@ -67,6 +67,7 @@ public class MainMethod extends Application{
         plinkoButton.setLayoutY(300);
         plinkoButton.setOnAction(new EventHandler<ActionEvent>(){
             public void handle(ActionEvent t){
+                player1.setMiniGameCount(player1.getMiniGameCount()+ 1);
                 Stage plinkoStage = new Stage();
                 try{
                 new PlinkoGui().start(plinkoStage);
@@ -82,6 +83,7 @@ public class MainMethod extends Application{
         brickBreakerButton.setLayoutY(350);
         brickBreakerButton.setOnAction(new EventHandler<ActionEvent>(){
             public void handle(ActionEvent t){
+                player1.setMiniGameCount(player1.getMiniGameCount()+ 1);
                 Stage plinkoStage = new Stage();
                 try{
                 new BrickBreaker().start(plinkoStage);
@@ -93,17 +95,17 @@ public class MainMethod extends Application{
         });
         Button boardButton = new Button("Board");
         boardButton.setLayoutX(50);
-        boardButton.setLayoutY(500);
+        boardButton.setLayoutY(450);
         boardButton.setOnAction(new EventHandler<ActionEvent>(){
             public void handle(ActionEvent t){
-                Stage plinkoStage = new Stage();
+                if (player1.getMiniGameCount() > 0){
+                    Stage plinkoStage = new Stage();
                 try{
                   new window2().start(plinkoStage);
                 }catch(Exception e){
                   e.printStackTrace();
                 }
-
-                //player1.addSpins(PlinkoGui.getSpinsFromPlinko());
+                }
             }
         });
 
@@ -112,6 +114,7 @@ public class MainMethod extends Application{
         snakeButton.setLayoutY(400);
         snakeButton.setOnAction(new EventHandler<ActionEvent>(){
             public void handle(ActionEvent t){
+                player1.setMiniGameCount(player1.getMiniGameCount()+ 1);
                 Stage snakeStage = new Stage();
                 try{
                   new SnakeMain().start(snakeStage);
@@ -132,22 +135,28 @@ public class MainMethod extends Application{
 
             }
         });
-        
-        Button shooterButton = new Button("Shooter");
-        shooterButton.setLayoutX(50);
-        shooterButton.setLayoutY(450);
+
+        Button loadButton = new Button("Load Game");
+        loadButton.setLayoutX(300);
+        loadButton.setLayoutY(300);
+        loadButton.setOnAction(new EventHandler<ActionEvent>(){
+            public void handle(ActionEvent a){
+                //primaryStage.close();
+                //FileIO.write(player1.getName(), player1.getScore(), player1.getSpins());
+
+            }
+        });
 
         root.getChildren().add(brickBreakerButton);
         root.getChildren().add(plinkoButton);
         root.getChildren().add(boardButton);
         root.getChildren().add(snakeButton);
-        root.getChildren().add(shooterButton);
         root.getChildren().add(highScores);
         root.getChildren().add(nameOfGame);
         root.getChildren().add(playerName);
         root.getChildren().add(displaySpins);
         root.getChildren().add(endGameButton);
-
+        root.getChildren().add(loadButton);
 
 
         primaryStage.setTitle("Stunning Luck");
