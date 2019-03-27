@@ -112,7 +112,24 @@ public class MainMethod extends Application{
         snakeButton.setLayoutY(400);
         snakeButton.setOnAction(new EventHandler<ActionEvent>(){
             public void handle(ActionEvent t){
-                player1.setSpins(1);
+                Stage snakeStage = new Stage();
+                try{
+                  new SnakeMain().start(snakeStage);
+                }catch(Exception e){
+                  e.printStackTrace();
+                }
+                
+            }
+        });
+
+        Button endGameButton = new Button("Save and Exit");
+        endGameButton.setLayoutX(50);
+        endGameButton.setLayoutY(50);
+        endGameButton.setOnAction(new EventHandler<ActionEvent>(){
+            public void handle(ActionEvent a){
+                primaryStage.close();
+                FileIO.write(player1.getName(), player1.getScore(), player1.getSpins());
+
             }
         });
         
@@ -129,6 +146,7 @@ public class MainMethod extends Application{
         root.getChildren().add(nameOfGame);
         root.getChildren().add(playerName);
         root.getChildren().add(displaySpins);
+        root.getChildren().add(endGameButton);
 
 
 

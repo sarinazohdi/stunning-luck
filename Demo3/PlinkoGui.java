@@ -386,16 +386,13 @@ public class PlinkoGui extends Application {
             }
         });
 
-        Button endGameButton = new Button("Save and Exit");
+        Button endGameButton = new Button("Main Menu");
         endGameButton.setLayoutX(150);
         endGameButton.setLayoutY(100);
         endGameButton.setOnAction(new EventHandler<ActionEvent>(){
             public void handle(ActionEvent a){
-                //if (timeline != null)
-                    //timeline.play();
                 pauseStage.close();
                 primaryStage.close();
-                FileIO.write(MainMethod.player1.getName(), MainMethod.player1.getScore());
 
             }
         });
