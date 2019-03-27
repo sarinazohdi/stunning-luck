@@ -20,6 +20,7 @@ import javafx.scene.control.TextField;
 public class MainMethod extends Application{
     public static Player player1 = new Player("John Doe");
     private int namesInputCount = 0;
+    private Label name = new Label(player1.getName());
 
     public void start(Stage primaryStage){
         
@@ -35,7 +36,7 @@ public class MainMethod extends Application{
             public void handle(ActionEvent n){
                 if (namesInputCount < 1){
                     player1.setName(playerName.getText());
-                    
+                    name.setText(player1.getName());
                 }
                 System.out.println(player1.getName());
                 namesInputCount++;
@@ -43,12 +44,18 @@ public class MainMethod extends Application{
         });
         
         
+        
+        name.setFont(new Font("Tahoma",40));
+        name.setTextFill(Color.GREEN);
+        name.setLayoutX(700);
+        name.setLayoutY(75);
 
         Label nameOfGame = new Label("Stunning Luck");
         nameOfGame.setFont(new Font("Tahoma",60));
         nameOfGame.setTextFill(Color.GREEN);
         nameOfGame.setLayoutX(200);
         nameOfGame.setLayoutY(75);
+
 
         Label highScores = new Label("High Scores");
         highScores.setFont(new Font("Tahoma", 30));
@@ -100,11 +107,11 @@ public class MainMethod extends Application{
             public void handle(ActionEvent t){
                 if (player1.getMiniGameCount() > 0){
                     Stage plinkoStage = new Stage();
-                try{
-                  new window2().start(plinkoStage);
-                }catch(Exception e){
-                  e.printStackTrace();
-                }
+                    try{
+                    new window2().start(plinkoStage);
+                    }catch(Exception e){
+                    e.printStackTrace();
+                    }
                 }
             }
         });
@@ -135,14 +142,16 @@ public class MainMethod extends Application{
 
             }
         });
-
-        Button loadButton = new Button("Load Game");
-        loadButton.setLayoutX(300);
-        loadButton.setLayoutY(300);
-        loadButton.setOnAction(new EventHandler<ActionEvent>(){
+        Button loadGameButton = new Button("Load Game");
+        loadGameButton.setLayoutX(300);
+        loadGameButton.setLayoutY(300);
+        loadGameButton.setOnAction(new EventHandler<ActionEvent>(){
             public void handle(ActionEvent a){
-                //primaryStage.close();
-                //FileIO.write(player1.getName(), player1.getScore(), player1.getSpins());
+                name.setText(player1.getName());
+                player1.setName(FileIO.readName());
+                player1.setSpins(Integer.parseInt(FileIO.readSpins()));
+                player1.setScore(Integer.parseInt(FileIO.readScore()));
+                name.setText(player1.getName());
 
             }
         });
@@ -151,13 +160,14 @@ public class MainMethod extends Application{
         root.getChildren().add(plinkoButton);
         root.getChildren().add(boardButton);
         root.getChildren().add(snakeButton);
+       
         root.getChildren().add(highScores);
         root.getChildren().add(nameOfGame);
         root.getChildren().add(playerName);
         root.getChildren().add(displaySpins);
         root.getChildren().add(endGameButton);
-        root.getChildren().add(loadButton);
-
+        root.getChildren().add(loadGameButton);
+        root.getChildren().add(name);
 
         primaryStage.setTitle("Stunning Luck");
         primaryStage.setScene(scene);
@@ -165,6 +175,7 @@ public class MainMethod extends Application{
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(30), 
             new EventHandler<ActionEvent>(){
                 public void handle(ActionEvent p){
+                    
                     displaySpins.setText("You've earned " + player1.getSpins() + " spins so far!");
                 }
             }));

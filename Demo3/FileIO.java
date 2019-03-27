@@ -53,9 +53,9 @@ public class FileIO{
         }
     }*/
     public static void write(String name, int score, int spins){
-        String line1="Name: "+ name;
-        String line2="High Score: "+ score;
-        String line3 = "Number of Spins: " + spins;
+        String line1= name;
+        String line2= Integer.toString(score);
+        String line3 = Integer.toString(spins);
         //String line2="Second line";
         try {
             FileWriter fwriter = new FileWriter("gameData.txt");
