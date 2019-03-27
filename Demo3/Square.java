@@ -14,6 +14,13 @@ public class Square {
     * Constructor to create Square without image
     */
 
+    public Square() {
+        this.title = "";
+        this.value = 0;
+        this.spins = 0;
+        this.image = "none"; 
+    }
+
     public Square(String title, int value, int spins) {
         this.title = title;
         this.value = value;
@@ -72,6 +79,14 @@ public class Square {
     public String getTitle(){
         Square copySquare = new Square(this.title, this.value, this.spins, this.image);
         return copySquare.title;
+    }
+
+        /*
+    * @return the square title
+    */
+    public String getImage(){
+        Square copySquare = new Square(this.title, this.value, this.spins, this.image);
+        return copySquare.image;
     }
 
     /*
