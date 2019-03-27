@@ -5,7 +5,7 @@ public class Player{
     private int numOfSpins;
     private int score;
     private int strikes;
-    private int miniGameCount;
+    private int miniGameCount = 0;
     private ArrayList<Square> awards = new ArrayList<Square>();
     //setter constrcutor that allows you to set all the iunstacne variables in the new object
     public Player(String setName, int setSpins, int setScore, int setStrikes){
@@ -46,15 +46,14 @@ public class Player{
         Player getterPlayer = new Player(this.name, this.numOfSpins, this.score, this.strikes);
         return getterPlayer.score;
     }
-    
+
     public int getStrikes(){
         Player getterPlayer = new Player(this.name, this.numOfSpins, this.score, this.strikes);
         return getterPlayer.strikes;
     }
 
     public int getMiniGameCount(){
-        Player getterPlayer = new Player(this.name, this.numOfSpins, this.score, this.strikes);
-        return getterPlayer.miniGameCount;
+        return this.miniGameCount;
     }
 
     public void setName(String newName){
@@ -68,7 +67,7 @@ public class Player{
     public void addSpins(int addedSpins){
         this.numOfSpins += addedSpins;
     }
-    
+
     public void setScore(int newScore){
         this.score = newScore;
     }
@@ -81,8 +80,8 @@ public class Player{
         this.miniGameCount = nMiniGameCount;
     }
 
-    public void addMiniGameCount(){
-        this.miniGameCount = this.miniGameCount +1;
+    public void addMiniGameCount(int i){
+        this.miniGameCount += i;
     }
 
     public void addAward(Square newAward){
@@ -93,7 +92,7 @@ public class Player{
         ArrayList<Square> getterAwards = new ArrayList<Square>();
         for (Square a : this.awards){
             getterAwards.add(a);
-        } 
+        }
 
         return getterAwards;
     }
