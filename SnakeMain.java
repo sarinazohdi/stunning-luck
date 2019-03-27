@@ -119,8 +119,8 @@ public class SnakeMain extends Application {
         /** Collision detection - its own body. REMEMBER: TAIL HERE MEANS HEAD. Restart game if condition is true.*/
         for (Node rect : snake) {
           if(rect != tail && tail.getTranslateX() == rect.getTranslateX() && tail.getTranslateY() == rect.getTranslateY()) {
-            scene = gameOver;
-            //restartGame();
+            //Scene = gameOver;
+            stopGame();
             //primaryStage.setScene(gameOver);
             break;
           }
@@ -128,7 +128,7 @@ public class SnakeMain extends Application {
 
         /** Collision detection - walls. Restart game condition is true. */
         if(tail.getTranslateX() < 0 || tail.getTranslateX() >= WINDOW_W || tail.getTranslateY() < 0 || tail.getTranslateY() >= WINDOW_H) {
-          restartGame();
+          stopGame();
           //primaryStage.setScene(gameOver);
         }
 
@@ -154,12 +154,6 @@ public class SnakeMain extends Application {
       return root;
     }
 
-    /** Private method to retart the game. */
-    private void restartGame() {
-      stopGame();
-      startGame();
-    }
-
     /** Private method to stop the game.Displays the score after the game is over. */
     private void stopGame() {
       //private int score;
@@ -174,7 +168,6 @@ public class SnakeMain extends Application {
     */
     /** Private method to start the game. */
     private void startGame() {
-      /** Default direction; snake will start running right. */
       direction = Direction.RIGHT;
       Rectangle head = new Rectangle(RECT_SIZE, RECT_SIZE);
       snake.add(head);
@@ -190,19 +183,19 @@ public class SnakeMain extends Application {
           return;
 
         switch (event.getCode()) {
-          case S:
+          case W:
             if (direction != Direction.DOWN)
               direction = Direction.UP;
               break;
-          case X:
+          case S:
             if (direction != Direction.UP)
                 direction = Direction.DOWN;
               break;
-           case Z:
+           case A:
             if (direction != Direction.RIGHT)
                   direction = Direction.LEFT;
                 break;
-            case C:
+            case D:
               if (direction != Direction.LEFT)
                   direction = Direction.RIGHT;
                 break;
