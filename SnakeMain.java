@@ -119,7 +119,8 @@ public class SnakeMain extends Application {
         /** Collision detection - its own body. REMEMBER: TAIL HERE MEANS HEAD. Restart game if condition is true.*/
         for (Node rect : snake) {
           if(rect != tail && tail.getTranslateX() == rect.getTranslateX() && tail.getTranslateY() == rect.getTranslateY()) {
-            restartGame();
+            scene = gameOver;
+            //restartGame();
             //primaryStage.setScene(gameOver);
             break;
           }
