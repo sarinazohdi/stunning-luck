@@ -67,41 +67,10 @@ public class window2 extends Application {
         board.populateBoard();
         ArrayList<Square> randomBoard = board.RandomizeList(board.getList()); // gets list of 20 random objects from the board class
         int counter = 0;
-        //ImageView wins = wins(returnprize, randomBoard);
-        
-        /*
-        each line adds an individual rectangle object to create the 20 boxes around the window.
-        
-        root.getChildren().add(prizeBox(0, 0, GRID, GRID));
-        root.getChildren().add(prizeBox(GRID, 0, GRID, GRID));
-        root.getChildren().add(prizeBox(2 * GRID, 0, GRID, GRID));
-        root.getChildren().add(prizeBox(3 * GRID, 0, GRID, GRID));
-        root.getChildren().add(prizeBox(4 * GRID, 0, GRID, GRID));
-        root.getChildren().add(prizeBox(5 * GRID, 0, GRID, GRID));
-        root.getChildren().add(prizeBox(0, GRID, GRID, GRID));
-        root.getChildren().add(prizeBox(0, 2 * GRID, GRID, GRID));
-        root.getChildren().add(prizeBox(0, 3 * GRID, GRID, GRID));
-        root.getChildren().add(prizeBox(0, 4 * GRID, GRID, GRID));
-        root.getChildren().add(prizeBox(0, 5 * GRID, GRID, GRID));
-        root.getChildren().add(prizeBox(5 * GRID, GRID, GRID, GRID));
-        root.getChildren().add(prizeBox(5 * GRID, 2 * GRID, GRID, GRID));
-        root.getChildren().add(prizeBox(5 * GRID, 3 * GRID, GRID, GRID));
-        root.getChildren().add(prizeBox(5 * GRID, 4 * GRID, GRID, GRID));
-        root.getChildren().add(prizeBox(5 * GRID, 5 * GRID, GRID, GRID));
-        root.getChildren().add(prizeBox(1 * GRID, 5 * GRID, GRID, GRID));
-        root.getChildren().add(prizeBox(2 * GRID, 5 * GRID, GRID, GRID));
-        root.getChildren().add(prizeBox(3 * GRID, 5 * GRID, GRID, GRID));
-        root.getChildren().add(prizeBox(4 * GRID, 5 * GRID, GRID, GRID));
-        */
-
-        //root.getChildren().add(prizeBox(GRID, GRID, 4 *GRID, 4 *GRID));
-
-        
-
-        
+       
         
         primaryStage.show();
-        Button save = new Button("Save & Quit");
+        Button save = new Button("Pause");
         save.setLayoutX(175);
         save.setLayoutY(175);
         save.setOnAction(click -> {
