@@ -36,7 +36,7 @@ public class Board{
                 gameboard.add(new Square("Win $100", 100, 0, "100.png" ));
             }
             else if  (i > 45 && i <=55) {
-                gameboard.add(new Square("Free Spin", 0, 1, "testimage.png" ));
+                gameboard.add(new Square("Free Spin", 0, 1, "freespin.png" ));
             }
             else if  (i > 55 && i <=60) {
                 gameboard.add(new Square("Jeep", 27000, 0, "testimage.png" ));
