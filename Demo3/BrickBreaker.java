@@ -231,8 +231,8 @@ public class BrickBreaker extends Application {
      * @return the score achieved
      */
     public static int getScore(){
-        //int spinsEarned = score/4;
-        return score;
+        int spinsEarned = score/4;
+        return spinsEarned;
     }
 
     public void pause(Stage pauseStage, Stage primaryStage, Timeline timeline){
