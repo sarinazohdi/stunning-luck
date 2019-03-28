@@ -40,9 +40,9 @@ import java.io.FileNotFoundException;
 public class window2 extends Application {
 
     public static final int GRID = 150; // sets a static variable that is used to calculate placement of items
-    private int returnprize = 0;
+    private int returnprize = 0; //holds the random number after the animation plays to assign prize
     private  Rectangle highlighter = currentSelection(random()); // variable to call the random highlight
-    private int spins = MainMethod.player1.getSpins();
+    private int spins = MainMethod.player1.getSpins(); // gets number of spins from player
     public static void main(String[] args) {
         launch(args);
     }
@@ -67,41 +67,11 @@ public class window2 extends Application {
         board.populateBoard();
         ArrayList<Square> randomBoard = board.RandomizeList(board.getList()); // gets list of 20 random objects from the board class
         int counter = 0;
-        //ImageView wins = wins(returnprize, randomBoard);
-        
-        /*
-        each line adds an individual rectangle object to create the 20 boxes around the window.
-        
-        root.getChildren().add(prizeBox(0, 0, GRID, GRID));
-        root.getChildren().add(prizeBox(GRID, 0, GRID, GRID));
-        root.getChildren().add(prizeBox(2 * GRID, 0, GRID, GRID));
-        root.getChildren().add(prizeBox(3 * GRID, 0, GRID, GRID));
-        root.getChildren().add(prizeBox(4 * GRID, 0, GRID, GRID));
-        root.getChildren().add(prizeBox(5 * GRID, 0, GRID, GRID));
-        root.getChildren().add(prizeBox(0, GRID, GRID, GRID));
-        root.getChildren().add(prizeBox(0, 2 * GRID, GRID, GRID));
-        root.getChildren().add(prizeBox(0, 3 * GRID, GRID, GRID));
-        root.getChildren().add(prizeBox(0, 4 * GRID, GRID, GRID));
-        root.getChildren().add(prizeBox(0, 5 * GRID, GRID, GRID));
-        root.getChildren().add(prizeBox(5 * GRID, GRID, GRID, GRID));
-        root.getChildren().add(prizeBox(5 * GRID, 2 * GRID, GRID, GRID));
-        root.getChildren().add(prizeBox(5 * GRID, 3 * GRID, GRID, GRID));
-        root.getChildren().add(prizeBox(5 * GRID, 4 * GRID, GRID, GRID));
-        root.getChildren().add(prizeBox(5 * GRID, 5 * GRID, GRID, GRID));
-        root.getChildren().add(prizeBox(1 * GRID, 5 * GRID, GRID, GRID));
-        root.getChildren().add(prizeBox(2 * GRID, 5 * GRID, GRID, GRID));
-        root.getChildren().add(prizeBox(3 * GRID, 5 * GRID, GRID, GRID));
-        root.getChildren().add(prizeBox(4 * GRID, 5 * GRID, GRID, GRID));
-        */
-
-        //root.getChildren().add(prizeBox(GRID, GRID, 4 *GRID, 4 *GRID));
-
-        
-
-        
+                
         
         primaryStage.show();
-        Button save = new Button("Save & Quit");
+        // creates pause button
+        Button save = new Button("Pause");
         save.setLayoutX(175);
         save.setLayoutY(175);
         save.setOnAction(click -> {
@@ -143,12 +113,13 @@ public class window2 extends Application {
         });
 
         root.getChildren().add(save);
-        //ImageView wins = wins(returnprize, randomBoard);
+        //creates label for remaining spins to be updated after animation plays
         Label spinsRemaining = new Label("Spins Remaining " + Integer.toString(spins));
         spinsRemaining.setLayoutX(375);
         spinsRemaining.setLayoutY(200);
         spinsRemaining.setTextFill(Color.WHITE);
         root.getChildren().add(spinsRemaining);
+        //creates label for remaining spins to be updated after animation plays
         Label currentScore = new Label("Current cash and prize value: " + Integer.toString(MainMethod.player1.getScore()));
         currentScore.setLayoutX(375);
         currentScore.setLayoutY(250);
@@ -163,37 +134,25 @@ public class window2 extends Application {
             @Override
             public void handle(ActionEvent event){
                 
-                //root.getChildren().remove(wins);
                 root.getChildren().remove(highlighter);
                 highlighter = currentSelection(random());
                 root.getChildren().add(highlighter);
-               
-                //ImageView wins = wins(random(), randomBoard);
-                
-                //wins.setX(375);
-                //wins.setY(200);
-                //root.getChildren().remove(wins);
-                //wins = wins(returnprize, randomBoard);
-                //root.getChildren().add(wins);
-                    
-                    
+     
                 }
-                
-                
-            }
-
-        
+                     
+            }        
         
         ));
+        //set timeline animation to repeat 15 times
         timeline.setCycleCount(15);
         timeline.setOnFinished(event -> {        
-            MainMethod.player1.addScore(randomBoard.get(returnprize).getValue());
+            MainMethod.player1.addScore(randomBoard.get(returnprize).getValue()); //add prize value to players score
             spins += randomBoard.get(returnprize).getSpins();
-            MainMethod.player1.setSpins(spins);
-            
+            MainMethod.player1.setSpins(spins);            
             currentScore.setText("Current cash and prize value: " + Integer.toString(MainMethod.player1.getScore()));
             
         });
+        //creates spin button and places it
         Button spin = new Button("SPIN");
         spin.setLayoutX(300);
         spin.setLayoutY(400);
