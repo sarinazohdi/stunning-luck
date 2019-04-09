@@ -181,7 +181,7 @@ public class SnakeMain extends Application {
 
 
 
-      root.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+      root.setBackground(new Background(new BackgroundFill(Color.LIGHTGREEN, CornerRadii.EMPTY, Insets.EMPTY)));
       //root.getChildren().add(imgView);
       root.getChildren().add(food);
       root.getChildren().add(snakeB);
