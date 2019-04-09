@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
@@ -140,7 +141,10 @@ public class SnakeMain extends Application {
           /** Add new food. */
           food.setTranslateX((int)(Math.random() * (WINDOW_W - RECT_SIZE)) / RECT_SIZE * RECT_SIZE);
           food.setTranslateY((int)(Math.random() * (WINDOW_H - RECT_SIZE)) / RECT_SIZE * RECT_SIZE);
-          Rectangle rect = new Rectangle(RECT_SIZE, RECT_SIZE);
+          //Rectangle rect = new Rectangle(RECT_SIZE, RECT_SIZE);
+          Circle rect = new Circle();
+          rect.setRadius(10.0f);
+          rect.setFill(Color.BLACK);
 
           /** Add food to snake. */
           rect.setTranslateX(xTail);
@@ -182,7 +186,6 @@ public class SnakeMain extends Application {
 
 
       root.setBackground(new Background(new BackgroundFill(Color.LIGHTGREEN, CornerRadii.EMPTY, Insets.EMPTY)));
-      //root.getChildren().add(imgView);
       root.getChildren().add(food);
       root.getChildren().add(snakeB);
       return root;
@@ -210,7 +213,9 @@ public class SnakeMain extends Application {
     private void startGame() {
       /** Default direction; snake will start running right. */
       direction = Direction.RIGHT;
-      Rectangle head = new Rectangle(RECT_SIZE, RECT_SIZE);
+      Circle head = new Circle();
+      head.setRadius(10.0f);
+      head.setFill(Color.BLACK);
       snake.add(head);
       timeline.play();
       running = true;
