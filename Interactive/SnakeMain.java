@@ -16,6 +16,12 @@ import javafx.scene.control.Button;
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
 import javafx.animation.Animation;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
+import javafx.geometry.Insets;
 /**
 * The SnakeMain class uses javafx to recreate a simple snake game.
 * Code referenced from:
@@ -57,8 +63,12 @@ public class SnakeMain extends Application {
       snake = snakeB.getChildren();
 
       /** Food graphics. */
-      Rectangle food = new Rectangle(RECT_SIZE, RECT_SIZE);
-      food.setFill(Color.GREEN);
+      Image image = new Image("Apple.png");
+      ImageView food = new ImageView(image);
+      food.setFitHeight(30);
+      food.setFitWidth(30);
+      //Rectangle food = new Rectangle(RECT_SIZE, RECT_SIZE);
+      //food.setFill(Color.RED);
 
       /** Locate food at a random point on the screen. */
       food.setTranslateX((int)(Math.random() * (WINDOW_W - RECT_SIZE)) / RECT_SIZE * RECT_SIZE);
@@ -101,7 +111,7 @@ public class SnakeMain extends Application {
 
         moved = true;
 
-        
+
 
         /** Since we removed one block, add one block back. */
         if(toRemove)
@@ -159,7 +169,7 @@ public class SnakeMain extends Application {
                   primaryStage.close();
               }
           });
-  
+
           rootG.getChildren().add(message);
           rootG.getChildren().add(spins);
           rootG.getChildren().add(mainMenu);
@@ -169,7 +179,12 @@ public class SnakeMain extends Application {
       }));
       timeline.setCycleCount(Timeline.INDEFINITE);
 
-      root.getChildren().addAll(food, snakeB);
+
+
+      root.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+      //root.getChildren().add(imgView);
+      root.getChildren().add(food);
+      root.getChildren().add(snakeB);
       return root;
     }
 
@@ -204,6 +219,7 @@ public class SnakeMain extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
       Scene scene = new Scene(createContent(primaryStage));
+
       scene.setOnKeyPressed(event -> {
         if(!moved)
           return;
@@ -229,7 +245,7 @@ public class SnakeMain extends Application {
             case P:
             if (timeline != null)
             timeline.pause();
-        
+
             Stage pauseStage = new Stage();
             pause(pauseStage, primaryStage);
 
@@ -238,7 +254,7 @@ public class SnakeMain extends Application {
         moved = false;
       });
 
-      
+
 
   /* Button to end the game. */
       Button endGame = new Button("End Game");
@@ -248,8 +264,6 @@ public class SnakeMain extends Application {
         //running = false;
         //primaryStage.close();
       //}
-
-
       primaryStage.setTitle("Snake Game");
       primaryStage.setScene(scene);
       primaryStage.show();
@@ -284,7 +298,6 @@ public class SnakeMain extends Application {
 
         root.getChildren().add(resumeButton);
         root.getChildren().add(endGameButton);
-        
 
         pauseStage.setTitle("Pause");
         pauseStage.setScene(scene);
