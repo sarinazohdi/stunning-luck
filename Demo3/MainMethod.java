@@ -146,14 +146,15 @@ public class MainMethod extends Application{
         plinkoButton.setBackground(Background.EMPTY);
         plinkoButton.setOnAction(new EventHandler<ActionEvent>(){
             public void handle(ActionEvent t){
-                player1.setMiniGameCount(player1.getMiniGameCount()+ 1);
-                Stage plinkoStage = new Stage();
-                try{
-                new PlinkoGui().start(plinkoStage);
-                }catch(Exception e){
-                    e.printStackTrace();
+                if (player1.getMiniGameCount() < 3){
+                    player1.setMiniGameCount(player1.getMiniGameCount()+ 1);
+                    Stage plinkoStage = new Stage();
+                    try{
+                    new PlinkoGui().start(plinkoStage);
+                    }catch(Exception e){
+                        e.printStackTrace();
+                    }
                 }
-                //player1.addSpins(PlinkoGui.getSpinsFromPlinko());
             }
         });
 
@@ -163,14 +164,15 @@ public class MainMethod extends Application{
         brickBreakerButton.setBackground(Background.EMPTY);
         brickBreakerButton.setOnAction(new EventHandler<ActionEvent>(){
             public void handle(ActionEvent t){
-                player1.setMiniGameCount(player1.getMiniGameCount()+ 1);
-                Stage plinkoStage = new Stage();
-                try{
-                new BrickBreaker().start(plinkoStage);
-                }catch(Exception e){
-                    e.printStackTrace();
+                if (player1.getMiniGameCount() < 3){
+                    player1.setMiniGameCount(player1.getMiniGameCount()+ 1);
+                    Stage plinkoStage = new Stage();
+                    try{
+                    new BrickBreaker().start(plinkoStage);
+                    }catch(Exception e){
+                        e.printStackTrace();
+                    }
                 }
-                //player1.addSpins(BrickBreaker.getScore());
             }
         });
         Button boardButton = new Button("     Board     ");
@@ -178,12 +180,14 @@ public class MainMethod extends Application{
         boardButton.setLayoutY(850);
         boardButton.setOnAction(new EventHandler<ActionEvent>(){
             public void handle(ActionEvent t){
-                if (player1.getMiniGameCount() > 0){
-                    Stage plinkoStage = new Stage();
-                    try{
-                    new window2().start(plinkoStage);
-                    }catch(Exception e){
-                    e.printStackTrace();
+                if (player1.getMiniGameCount() >= 3){
+                    if (player1.getMiniGameCount() > 0){
+                        Stage plinkoStage = new Stage();
+                        try{
+                        new window2().start(plinkoStage);
+                        }catch(Exception e){
+                        e.printStackTrace();
+                        }
                     }
                 }
             }
@@ -195,12 +199,15 @@ public class MainMethod extends Application{
         snakeButton.setBackground(Background.EMPTY);
         snakeButton.setOnAction(new EventHandler<ActionEvent>(){
             public void handle(ActionEvent t){
-                player1.setMiniGameCount(player1.getMiniGameCount()+ 1);
-                Stage snakeStage = new Stage();
-                try{
-                  new SnakeMain().start(snakeStage);
-                }catch(Exception e){
-                  e.printStackTrace();
+                 if (player1.getMiniGameCount() < 3){
+                    player1.setMiniGameCount(player1.getMiniGameCount()+ 1);
+                    Stage snakeStage = new Stage();
+                    try{
+                    new SnakeMain().start(snakeStage);
+                    }catch(Exception e){
+                    e.printStackTrace();
+                    }
+
                 }
 
             }
@@ -225,6 +232,7 @@ public class MainMethod extends Application{
                 player1.setName(FileIO.readName());
                 player1.setSpins(Integer.parseInt(FileIO.readSpins()));
                 player1.setScore(Integer.parseInt(FileIO.readScore()));
+                player1.setMiniGameCount(Integer.parseInt(FileIO.readMiniGameCount()));
                 name.setText(player1.getName());
 
             }
