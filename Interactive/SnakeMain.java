@@ -64,10 +64,10 @@ public class SnakeMain extends Application {
       snake = snakeB.getChildren();
 
       /** Food graphics. */
-      Image image = new Image("Apple.png");
+      Image image = new Image("Apple1.JPG");
       ImageView food = new ImageView(image);
-      food.setFitHeight(30);
-      food.setFitWidth(30);
+      food.setFitHeight(50);
+      food.setFitWidth(50);
       //Rectangle food = new Rectangle(RECT_SIZE, RECT_SIZE);
       //food.setFill(Color.RED);
 
@@ -142,9 +142,10 @@ public class SnakeMain extends Application {
           food.setTranslateX((int)(Math.random() * (WINDOW_W - RECT_SIZE)) / RECT_SIZE * RECT_SIZE);
           food.setTranslateY((int)(Math.random() * (WINDOW_H - RECT_SIZE)) / RECT_SIZE * RECT_SIZE);
           //Rectangle rect = new Rectangle(RECT_SIZE, RECT_SIZE);
+
           Circle rect = new Circle();
-          rect.setRadius(10.0f);
-          rect.setFill(Color.BLACK);
+          rect.setRadius(15.0f);
+          rect.setFill(Color.GREEN);
 
           /** Add food to snake. */
           rect.setTranslateX(xTail);
@@ -185,7 +186,7 @@ public class SnakeMain extends Application {
 
 
 
-      root.setBackground(new Background(new BackgroundFill(Color.LIGHTGREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+      root.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
       root.getChildren().add(food);
       root.getChildren().add(snakeB);
       return root;
@@ -213,9 +214,17 @@ public class SnakeMain extends Application {
     private void startGame() {
       /** Default direction; snake will start running right. */
       direction = Direction.RIGHT;
+
+      //Image image = new Image("Snakehead.jpg");
+      //ImageView head = new ImageView(image);
+      //head.setFitHeight(60);
+      //head.setFitWidth(60);
+
       Circle head = new Circle();
-      head.setRadius(10.0f);
-      head.setFill(Color.BLACK);
+      head.setRadius(15.0f);
+      head.setFill(Color.GREEN);
+
+
       snake.add(head);
       timeline.play();
       running = true;
