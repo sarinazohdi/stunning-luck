@@ -115,7 +115,7 @@ public class MainMethod extends Application{
                     player1.setName(playerName.getText());
                     name.setText(player1.getName());
                 }
-                System.out.println(player1.getName());
+                
                 namesInputCount++;
             }
         });
@@ -219,7 +219,7 @@ public class MainMethod extends Application{
         endGameButton.setOnAction(new EventHandler<ActionEvent>(){
             public void handle(ActionEvent a){
                 primaryStage.close();
-                FileIO.write(player1.getName(), player1.getScore(), player1.getSpins());
+                FileIO.write(player1.getName(), player1.getScore(), player1.getSpins(), player1.getMiniGameCount());
 
             }
         });
