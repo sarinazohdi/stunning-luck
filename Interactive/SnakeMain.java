@@ -10,7 +10,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
@@ -64,10 +63,10 @@ public class SnakeMain extends Application {
       snake = snakeB.getChildren();
 
       /** Food graphics. */
-      Image image = new Image("Apple1.JPG");
+      Image image = new Image("Apple.png");
       ImageView food = new ImageView(image);
-      food.setFitHeight(50);
-      food.setFitWidth(50);
+      food.setFitHeight(30);
+      food.setFitWidth(30);
       //Rectangle food = new Rectangle(RECT_SIZE, RECT_SIZE);
       //food.setFill(Color.RED);
 
@@ -141,11 +140,7 @@ public class SnakeMain extends Application {
           /** Add new food. */
           food.setTranslateX((int)(Math.random() * (WINDOW_W - RECT_SIZE)) / RECT_SIZE * RECT_SIZE);
           food.setTranslateY((int)(Math.random() * (WINDOW_H - RECT_SIZE)) / RECT_SIZE * RECT_SIZE);
-          //Rectangle rect = new Rectangle(RECT_SIZE, RECT_SIZE);
-
-          Circle rect = new Circle();
-          rect.setRadius(15.0f);
-          rect.setFill(Color.GREEN);
+          Rectangle rect = new Rectangle(RECT_SIZE, RECT_SIZE);
 
           /** Add food to snake. */
           rect.setTranslateX(xTail);
@@ -186,7 +181,8 @@ public class SnakeMain extends Application {
 
 
 
-      root.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+      root.setBackground(new Background(new BackgroundFill(Color.LIGHTGREEN, CornerRadii.EMPTY, Insets.EMPTY)));
+      //root.getChildren().add(imgView);
       root.getChildren().add(food);
       root.getChildren().add(snakeB);
       return root;
@@ -214,17 +210,7 @@ public class SnakeMain extends Application {
     private void startGame() {
       /** Default direction; snake will start running right. */
       direction = Direction.RIGHT;
-
-      //Image image = new Image("Snakehead.jpg");
-      //ImageView head = new ImageView(image);
-      //head.setFitHeight(60);
-      //head.setFitWidth(60);
-
-      Circle head = new Circle();
-      head.setRadius(15.0f);
-      head.setFill(Color.GREEN);
-
-
+      Rectangle head = new Rectangle(RECT_SIZE, RECT_SIZE);
       snake.add(head);
       timeline.play();
       running = true;
@@ -322,3 +308,4 @@ public class SnakeMain extends Application {
       launch(args);
     }
 }
+
