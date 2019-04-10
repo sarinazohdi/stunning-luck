@@ -16,6 +16,9 @@ import javafx.scene.text.Font;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 
 public class MainMethod extends Application{
     public static Player player1 = new Player("John Doe");
@@ -23,14 +26,88 @@ public class MainMethod extends Application{
     private Label name = new Label(player1.getName());
 
     public void start(Stage primaryStage){
-        
-        Pane root = new Pane();
-        root.setBackground(new Background(new BackgroundFill(Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY)));
-        Scene scene = new Scene(root, 1000, 1000);
+//images on board
+      Image image = new Image("Capture.png");
+      ImageView imgView = new ImageView(image);
+      imgView.setX(700);
+      imgView.setY(400);
+      imgView.setFitHeight(50);
+      imgView.setFitWidth(100);
 
+
+      Image image2 = new Image("Capture2.png");
+      ImageView imgView2 = new ImageView(image2);
+      imgView2.setX(430);
+      imgView2.setY(400);
+      imgView2.setFitHeight(80);
+      imgView2.setFitWidth(100);
+
+
+      Image image3 = new Image("Capture3.png");
+      ImageView imgView3 = new ImageView(image3);
+      imgView3.setX(200);
+      imgView3.setY(400);
+      imgView3.setFitHeight(80);
+      imgView3.setFitWidth(100);
+
+      Image image4 = new Image("Capture4.png");
+      ImageView imgView4 = new ImageView(image4);
+      imgView4.setX(445);
+      imgView4.setY(700);
+      imgView4.setFitHeight(80);
+      imgView4.setFitWidth(100);
+
+      Image image5 = new Image("Capture5.png");
+      ImageView imgView5 = new ImageView(image5);
+      imgView5.setX(520);
+      imgView5.setY(750);
+      imgView5.setFitHeight(80);
+      imgView5.setFitWidth(100);
+
+      Image plinkob2 = new Image("plinkob.png");
+      ImageView plinkob = new ImageView(plinkob2);
+      plinkob.setFitHeight(50);
+      plinkob.setFitWidth(150);
+
+      Image brick2 = new Image("brickb.png");
+      ImageView brickb = new ImageView(brick2);
+      brickb.setFitHeight(50);
+      brickb.setFitWidth(150);
+
+      Image imageC = new Image("clover.png");
+      ImageView clover = new ImageView(imageC);
+      clover.setX(100);
+      clover.setY(150);
+      clover.setFitHeight(150);
+      clover.setFitWidth(150);
+
+      Image snake2 = new Image("snakeb.png");
+      ImageView snakeb = new ImageView(snake2);
+      snakeb.setFitHeight(50);
+      snakeb.setFitWidth(150);
+
+
+      Image image6 = new Image("Capture6.png");
+      ImageView imgView6 = new ImageView(image6);
+      imgView6.setX(370);
+      imgView6.setY(750);
+      imgView6.setFitHeight(80);
+      imgView6.setFitWidth(100);
+
+
+        Pane root = new Pane();
+        root.setBackground(new Background(new BackgroundFill(Color.PINK, CornerRadii.EMPTY, Insets.EMPTY)));
+        Scene scene = new Scene(root, 1000, 1000);
+        root.getChildren().add(imgView);
+        root.getChildren().add(imgView2);
+        root.getChildren().add(imgView3);
+        root.getChildren().add(imgView4);
+        root.getChildren().add(imgView5);
+        root.getChildren().add(imgView6);
+        root.getChildren().add(clover);
         TextField playerName = new TextField("New player? Input name here!");
-        playerName.setLayoutX(300);
-        playerName.setLayoutY(250);
+        playerName.setLayoutX(375);
+        playerName.setLayoutY(585);
         playerName.setPrefWidth(225);
         playerName.setOnAction(new EventHandler<ActionEvent>(){
             public void handle(ActionEvent n){
@@ -42,36 +119,31 @@ public class MainMethod extends Application{
                 namesInputCount++;
             }
         });
-        
-        
-        
+
+
+
         name.setFont(new Font("Tahoma",40));
-        name.setTextFill(Color.GREEN);
+        name.setTextFill(Color.BLACK);
         name.setLayoutX(700);
         name.setLayoutY(75);
 
         Label nameOfGame = new Label("Stunning Luck");
-        nameOfGame.setFont(new Font("Tahoma",60));
-        nameOfGame.setTextFill(Color.GREEN);
-        nameOfGame.setLayoutX(200);
-        nameOfGame.setLayoutY(75);
-
-
-        Label highScores = new Label("High Scores");
-        highScores.setFont(new Font("Tahoma", 30));
-        highScores.setTextFill(Color.GREEN);
-        highScores.setLayoutX(800);
-        highScores.setLayoutY(30);
+        nameOfGame.setFont(new Font("Tahoma",70));
+        nameOfGame.setTextFill(Color.BLACK);
+        nameOfGame.setLayoutX(268);
+        nameOfGame.setLayoutY(170);
 
         Label displaySpins = new Label("You've earned " + player1.getSpins() + " spins so far!");
         displaySpins.setFont(new Font("Tahoma", 30));
-        displaySpins.setTextFill(Color.GREEN);
-        displaySpins.setLayoutX(350);
-        displaySpins.setLayoutY(200);
+        displaySpins.setTextFill(Color.BLACK);
+        displaySpins.setLayoutX(300);
+        displaySpins.setLayoutY(325);
 
-        Button plinkoButton = new Button("Plinko");
-        plinkoButton.setLayoutX(50);
-        plinkoButton.setLayoutY(300);
+        Button plinkoButton = new Button(" ", plinkob);
+
+        plinkoButton.setLayoutX(166);
+        plinkoButton.setLayoutY(500);
+        plinkoButton.setBackground(Background.EMPTY);
         plinkoButton.setOnAction(new EventHandler<ActionEvent>(){
             public void handle(ActionEvent t){
                 player1.setMiniGameCount(player1.getMiniGameCount()+ 1);
@@ -85,9 +157,10 @@ public class MainMethod extends Application{
             }
         });
 
-        Button brickBreakerButton = new Button("Brick Breaker");
-        brickBreakerButton.setLayoutX(50);
-        brickBreakerButton.setLayoutY(350);
+        Button brickBreakerButton = new Button(" ", brickb);
+        brickBreakerButton.setLayoutX(400);
+        brickBreakerButton.setLayoutY(500);
+        brickBreakerButton.setBackground(Background.EMPTY);
         brickBreakerButton.setOnAction(new EventHandler<ActionEvent>(){
             public void handle(ActionEvent t){
                 player1.setMiniGameCount(player1.getMiniGameCount()+ 1);
@@ -100,9 +173,9 @@ public class MainMethod extends Application{
                 //player1.addSpins(BrickBreaker.getScore());
             }
         });
-        Button boardButton = new Button("Board");
-        boardButton.setLayoutX(50);
-        boardButton.setLayoutY(450);
+        Button boardButton = new Button("     Board     ");
+        boardButton.setLayoutX(450);
+        boardButton.setLayoutY(850);
         boardButton.setOnAction(new EventHandler<ActionEvent>(){
             public void handle(ActionEvent t){
                 if (player1.getMiniGameCount() > 0){
@@ -116,9 +189,10 @@ public class MainMethod extends Application{
             }
         });
 
-        Button snakeButton = new Button("Snake");
-        snakeButton.setLayoutX(50);
-        snakeButton.setLayoutY(400);
+        Button snakeButton = new Button(" ",snakeb);
+        snakeButton.setLayoutX(667);
+        snakeButton.setLayoutY(500);
+        snakeButton.setBackground(Background.EMPTY);
         snakeButton.setOnAction(new EventHandler<ActionEvent>(){
             public void handle(ActionEvent t){
                 player1.setMiniGameCount(player1.getMiniGameCount()+ 1);
@@ -128,7 +202,7 @@ public class MainMethod extends Application{
                 }catch(Exception e){
                   e.printStackTrace();
                 }
-                
+
             }
         });
 
@@ -143,8 +217,8 @@ public class MainMethod extends Application{
             }
         });
         Button loadGameButton = new Button("Load Game");
-        loadGameButton.setLayoutX(300);
-        loadGameButton.setLayoutY(300);
+        loadGameButton.setLayoutX(800);
+        loadGameButton.setLayoutY(875);
         loadGameButton.setOnAction(new EventHandler<ActionEvent>(){
             public void handle(ActionEvent a){
                 name.setText(player1.getName());
@@ -160,8 +234,8 @@ public class MainMethod extends Application{
         root.getChildren().add(plinkoButton);
         root.getChildren().add(boardButton);
         root.getChildren().add(snakeButton);
-       
-        root.getChildren().add(highScores);
+
+
         root.getChildren().add(nameOfGame);
         root.getChildren().add(playerName);
         root.getChildren().add(displaySpins);
@@ -172,16 +246,16 @@ public class MainMethod extends Application{
         primaryStage.setTitle("Stunning Luck");
         primaryStage.setScene(scene);
         primaryStage.show();
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(30), 
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(30),
             new EventHandler<ActionEvent>(){
                 public void handle(ActionEvent p){
-                    
+
                     displaySpins.setText("You've earned " + player1.getSpins() + " spins so far!");
                 }
             }));
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
-        
+
     }
     public static void main(String[] args){
 
