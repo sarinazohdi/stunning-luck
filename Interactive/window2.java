@@ -87,7 +87,13 @@ public class window2 extends Application {
         congrats.setTextFill(Color.BLACK);
         congrats.setLayoutX(300);
         congrats.setLayoutY(200);
-
+        
+        Label currentScore = new Label("You won a total cash and prize value of: " + Integer.toString(MainMethod.player1.getScore()));
+        currentScore.setLayoutX(200);
+        currentScore.setLayoutY(250);
+        currentScore.setTextFill(Color.BLACK);
+        
+        root2.getChildren().add(currentScore);
         root2.getChildren().add(endGame);
         root2.getChildren().add(congrats);
 
