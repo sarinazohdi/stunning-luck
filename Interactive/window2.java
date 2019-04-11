@@ -67,9 +67,34 @@ public class window2 extends Application {
         board.populateBoard();
         ArrayList<Square> randomBoard = board.RandomizeList(board.getList()); // gets list of 20 random objects from the board class
         int counter = 0;
-                
+
+        Group root2 = new Group();
+        Scene endScene  = new Scene(root2, 900, 900, Color.PINK);
+
+        
+        Button endGame = new Button("Close");
+        endGame.setLayoutX(350);
+        endGame.setLayoutY(500);
+        endGame.setOnAction(click -> {
+            primaryStage.close();
+            MainMethod.gameFinished = true;
+            
+
+        });
+
+        Label congrats = new Label("Congratulations!");
+        congrats.setFont(new Font("Tahoma",70));
+        congrats.setTextFill(Color.BLACK);
+        congrats.setLayoutX(300);
+        congrats.setLayoutY(200);
+
+        root2.getChildren().add(endGame);
+        root2.getChildren().add(congrats);
+
         
         primaryStage.show();
+
+        
         // creates pause button
         Button save = new Button("Pause");
         save.setLayoutX(175);
@@ -128,7 +153,7 @@ public class window2 extends Application {
         root.getChildren().add(highlighter);
 
 
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(500),
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(200),
         new EventHandler<ActionEvent>() {
             
             @Override
@@ -137,10 +162,13 @@ public class window2 extends Application {
                 root.getChildren().remove(highlighter);
                 highlighter = currentSelection(random());
                 root.getChildren().add(highlighter);
+                 
      
                 }
-                     
-            }        
+                    
+            }  
+            
+            
         
         ));
         //set timeline animation to repeat 15 times
@@ -150,6 +178,9 @@ public class window2 extends Application {
             spins += randomBoard.get(returnprize).getSpins();
             MainMethod.player1.setSpins(spins);            
             currentScore.setText("Current cash and prize value: " + Integer.toString(MainMethod.player1.getScore()));
+            if(spins == 0){
+                primaryStage.setScene(endScene);
+            }
             
         });
         //creates spin button and places it
@@ -194,6 +225,8 @@ public class window2 extends Application {
             root.getChildren().add(label);
 
         }
+
+        
 
     }
 

@@ -24,6 +24,7 @@ public class MainMethod extends Application{
     public static Player player1 = new Player("John Doe");
     private int namesInputCount = 0;
     private Label name = new Label(player1.getName());
+    public static Boolean gameFinished = false;
 
     public void start(Stage primaryStage){
 //images on board
@@ -115,7 +116,7 @@ public class MainMethod extends Application{
                     player1.setName(playerName.getText());
                     name.setText(player1.getName());
                 }
-                
+                System.out.println(player1.getName());
                 namesInputCount++;
             }
         });
@@ -259,6 +260,10 @@ public class MainMethod extends Application{
                 public void handle(ActionEvent p){
 
                     displaySpins.setText("You've earned " + player1.getSpins() + " spins so far!");
+                    if (gameFinished == true){
+                        FileIO.write("John Doe", 0, 0, 0);
+                        primaryStage.close();
+                    }
                 }
             }));
         timeline.setCycleCount(Timeline.INDEFINITE);
