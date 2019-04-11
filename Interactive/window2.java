@@ -89,8 +89,9 @@ public class window2 extends Application {
         congrats.setLayoutY(200);
         
         Label endScore = new Label("You won a total cash and prize value of: " + Integer.toString(MainMethod.player1.getScore()));
+        endScore.setFont(new Font("Tahoma",70));
         endScore.setLayoutX(200);
-        endScore.setLayoutY(250);
+        endScore.setLayoutY(300);
         endScore.setTextFill(Color.BLACK);
         
         root2.getChildren().add(endScore);
