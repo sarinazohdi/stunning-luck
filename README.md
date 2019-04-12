@@ -22,5 +22,9 @@ Unit tests are included within the InterativeDemo folder, in a subfolder named T
 
 Command to complie each file:
 ```
-javac -cp .:junit-[].jar:hamcrest-core-[].jar *.java
+javac -cp .:junit-4.12.jar:hamcrest-core-1.3.jar *.java
+```
+Run the test using the command:
+```
+java -cp .:junit-4.12.jar:hamcrest-core-1.3.jar org.junit.runner.JUnitCore <test class>
 ```
