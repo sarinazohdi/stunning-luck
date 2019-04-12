@@ -28,7 +28,7 @@ public class MainMethod extends Application{
 
     public void start(Stage primaryStage){
 //images on board
-      Image image = new Image("Capture.png");
+      Image image = new Image("Resources/Capture.png");
       ImageView imgView = new ImageView(image);
       imgView.setX(700);
       imgView.setY(400);
@@ -36,7 +36,7 @@ public class MainMethod extends Application{
       imgView.setFitWidth(100);
 
 
-      Image image2 = new Image("Capture2.png");
+      Image image2 = new Image("Resources/Capture2.png");
       ImageView imgView2 = new ImageView(image2);
       imgView2.setX(430);
       imgView2.setY(400);
@@ -44,51 +44,51 @@ public class MainMethod extends Application{
       imgView2.setFitWidth(100);
 
 
-      Image image3 = new Image("Capture3.png");
+      Image image3 = new Image("Resources/Capture3.png");
       ImageView imgView3 = new ImageView(image3);
       imgView3.setX(200);
       imgView3.setY(400);
       imgView3.setFitHeight(80);
       imgView3.setFitWidth(100);
 
-      Image image4 = new Image("Capture4.png");
+      Image image4 = new Image("Resources/Capture4.png");
       ImageView imgView4 = new ImageView(image4);
       imgView4.setX(445);
       imgView4.setY(700);
       imgView4.setFitHeight(80);
       imgView4.setFitWidth(100);
 
-      Image image5 = new Image("Capture5.png");
+      Image image5 = new Image("Resources/Capture5.png");
       ImageView imgView5 = new ImageView(image5);
       imgView5.setX(520);
       imgView5.setY(750);
       imgView5.setFitHeight(80);
       imgView5.setFitWidth(100);
 
-      Image plinkob2 = new Image("plinkob.png");
+      Image plinkob2 = new Image("Resources/plinkob.png");
       ImageView plinkob = new ImageView(plinkob2);
       plinkob.setFitHeight(50);
       plinkob.setFitWidth(150);
 
-      Image brick2 = new Image("brickb.png");
+      Image brick2 = new Image("Resources/brickb.png");
       ImageView brickb = new ImageView(brick2);
       brickb.setFitHeight(50);
       brickb.setFitWidth(150);
 
-      Image imageC = new Image("clover.png");
+      Image imageC = new Image("Resources/clover.png");
       ImageView clover = new ImageView(imageC);
       clover.setX(100);
       clover.setY(150);
       clover.setFitHeight(150);
       clover.setFitWidth(150);
 
-      Image snake2 = new Image("snakeb.png");
+      Image snake2 = new Image("Resources/snakeb.png");
       ImageView snakeb = new ImageView(snake2);
       snakeb.setFitHeight(50);
       snakeb.setFitWidth(150);
 
 
-      Image image6 = new Image("Capture6.png");
+      Image image6 = new Image("Resources/Capture6.png");
       ImageView imgView6 = new ImageView(image6);
       imgView6.setX(370);
       imgView6.setY(750);
