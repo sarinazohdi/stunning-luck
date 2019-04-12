@@ -6,7 +6,8 @@ This program requires a JavaFX software platform for the GUI version.
 Instructions
 ---------------------
 1. Locate the folder InteractiveDemo in the repository stunning-luck
-2. Save the code to your computer and change directories (cd)to it in your command line ( the resources subfolder must be downloaded as well)
+2. Save the code to your computer and change directories (cd)to it in your command line 
+Note: the resources subfolder must be downloaded as well
 3. Compile all files - javac *.java
 4. Run the MainMethod class file - java MainMethod
 --------
