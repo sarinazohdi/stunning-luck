@@ -19,3 +19,8 @@ the minigames(brickbreaker, snake, plinko) and spin the final prize board. You a
 There is also a text based version of the game and it can be found under the InterativeDemo folder. The files are named BoardText, MainText and MiniGameText. 
 
 Unit tests are included within the InterativeDemo folder, in a subfolder named Test files. These unit tests must be moved to the main path of the program and run individually. Please note junit is required to run the unit tests. Download junit and hamcrest files and ensure that they are located in the same directory as the test files. 
+
+Command to complie each file:
+```
+javac -cp .:junit-[].jar:hamcrest-core-[].jar *.java
+```
