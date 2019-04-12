@@ -63,7 +63,7 @@ public class SnakeMain extends Application {
       snake = snakeB.getChildren();
 
       /** Food graphics. */
-      Image image = new Image("Apple.png");
+      Image image = new Image("Resources/Apple.png");
       ImageView food = new ImageView(image);
       food.setFitHeight(30);
       food.setFitWidth(30);
@@ -153,7 +153,7 @@ public class SnakeMain extends Application {
           message.setLayoutX(100);
           message.setLayoutY(100);
 
-          Image image2 = new Image("sadsnake.png");
+          Image image2 = new Image("Resources/sadsnake.png");
           ImageView snakepic = new ImageView(image2);
           snakepic.setLayoutX(110);
           snakepic.setLayoutY(30);
@@ -182,7 +182,7 @@ public class SnakeMain extends Application {
       }));
       timeline.setCycleCount(Timeline.INDEFINITE);
 
-      Image bimage = new Image("snakebackground.png");
+      Image bimage = new Image("Resources/snakebackground.png");
       BackgroundSize size = new BackgroundSize(600, 450, false, false, false, false);
       BackgroundImage backgroundimage = new BackgroundImage(bimage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, size);
       Background background = new Background(backgroundimage);
