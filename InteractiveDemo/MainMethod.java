@@ -96,8 +96,8 @@ public class MainMethod extends Application{
       imgView6.setFitWidth(100);
 
     Label error = new Label("No Saved Games!");
-    error.setLayoutX(300);
-    error.setLayoutY(350);
+    error.setLayoutX(800);
+    error.setLayoutY(50);
     error.setVisible(false);
 
 
