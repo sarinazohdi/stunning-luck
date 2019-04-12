@@ -29,13 +29,6 @@ import javafx.scene.layout.BackgroundSize;
 * Code referenced from:
 * Title: JavaFX: Snake
 * Author: Almas B.
-
-* @author
-* - Matthew Forman
-* - Sarina Zohdi
-* - Alexis Lee
-* - Doug Comperen
-* - Firoz Lakhani
 */
 
 public class SnakeMain extends Application {
