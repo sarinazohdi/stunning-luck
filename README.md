@@ -1,7 +1,7 @@
 # stunning-luck
 https://github.com/sarinazohdi/stunning-luck
 ---------------------
-Demo - 3 Instructions
+Instructions
 ---------------------
 1. Locate the folder Demo 3 in the repository stunning-luck
 2. Save the code to your computer and change directories (cd)to it in your command line
