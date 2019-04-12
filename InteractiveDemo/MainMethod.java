@@ -253,6 +253,24 @@ public class MainMethod extends Application{
 
             }
         });
+        Button newGameButton = new Button("New Game");
+        newGameButton.setLayoutX(450);
+        newGameButton.setLayoutY(625);
+        newGameButton.setOnAction(new EventHandler<ActionEvent>(){
+            
+
+            public void handle(ActionEvent a){
+                player1.setName("John Doe");
+                name.setText(player1.getName());
+
+                player1.setSpins(0);
+                player1.setScore(0);
+                
+
+            }
+        });
+
+        root.getChildren().add(newGameButton);
         root.getChildren().add(error);
         root.getChildren().add(brickBreakerButton);
         root.getChildren().add(plinkoButton);
