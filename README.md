@@ -1,7 +1,7 @@
 # stunning-luck
 Repository: https://github.com/sarinazohdi/stunning-luck
 ---------------------
-This program requires a JavaFX software platform.
+This program requires a JavaFX software platform for the GUI version. 
 
 Instructions
 ---------------------
