@@ -1,6 +1,8 @@
 # stunning-luck
 Repository: https://github.com/sarinazohdi/stunning-luck
 ---------------------
+This program requires a JavaFX software platform.
+
 Instructions
 ---------------------
 1. Locate the folder InteractiveDemo in the repository stunning-luck
