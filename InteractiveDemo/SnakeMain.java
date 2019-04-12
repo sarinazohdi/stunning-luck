@@ -20,8 +20,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.geometry.Insets;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundSize;
 /**
 * The SnakeMain class uses javafx to recreate a simple snake game.
 * Code referenced from:
@@ -30,8 +32,6 @@ import javafx.geometry.Insets;
 */
 
 public class SnakeMain extends Application {
-
-    //public int score1 = 0;
 
     /**A direction can be up, down, left, or right.*/
     public enum Direction {
@@ -63,12 +63,11 @@ public class SnakeMain extends Application {
       snake = snakeB.getChildren();
 
       /** Food graphics. */
-      Image image = new Image("Resources/Apple.png");
+      Image image = new Image("Apple.png");
       ImageView food = new ImageView(image);
       food.setFitHeight(30);
       food.setFitWidth(30);
-      //Rectangle food = new Rectangle(RECT_SIZE, RECT_SIZE);
-      //food.setFill(Color.RED);
+
 
       /** Locate food at a random point on the screen. */
       food.setTranslateX((int)(Math.random() * (WINDOW_W - RECT_SIZE)) / RECT_SIZE * RECT_SIZE);
@@ -120,8 +119,6 @@ public class SnakeMain extends Application {
         /** Collision detection - its own body. REMEMBER: TAIL HERE MEANS HEAD. Restart game if condition is true.*/
         for (Node rect : snake) {
           if(rect != tail && tail.getTranslateX() == rect.getTranslateX() && tail.getTranslateY() == rect.getTranslateY()) {
-            //restartGame();
-            //primaryStage.setScene(gameOver);
             timeline.stop();
             break;
           }
@@ -129,8 +126,6 @@ public class SnakeMain extends Application {
 
         /** Collision detection - walls. Restart game condition is true. */
         if(tail.getTranslateX() < 0 || tail.getTranslateX() >= WINDOW_W || tail.getTranslateY() < 0 || tail.getTranslateY() >= WINDOW_H) {
-          //restartGame();
-          //primaryStage.setScene(gameOver);
           timeline.stop();
         }
 
@@ -141,6 +136,7 @@ public class SnakeMain extends Application {
           food.setTranslateX((int)(Math.random() * (WINDOW_W - RECT_SIZE)) / RECT_SIZE * RECT_SIZE);
           food.setTranslateY((int)(Math.random() * (WINDOW_H - RECT_SIZE)) / RECT_SIZE * RECT_SIZE);
           Rectangle rect = new Rectangle(RECT_SIZE, RECT_SIZE);
+          rect.setFill(Color.BLUE);
 
           /** Add food to snake. */
           rect.setTranslateX(xTail);
@@ -156,7 +152,14 @@ public class SnakeMain extends Application {
           Label message = new Label("Game over");
           message.setLayoutX(100);
           message.setLayoutY(100);
-          //public int fscore = snake.size() - 1;
+
+          Image image2 = new Image("sadsnake.png");
+          ImageView snakepic = new ImageView(image2);
+          snakepic.setLayoutX(110);
+          snakepic.setLayoutY(30);
+          snakepic.setFitHeight(70);
+          snakepic.setFitWidth(70);
+
           Label spins = new Label("You've earned this many spins: " + Integer.toString(snake.size() - 1));
           spins.setLayoutX(75);
           spins.setLayoutY(150);
@@ -169,7 +172,7 @@ public class SnakeMain extends Application {
                   primaryStage.close();
               }
           });
-
+          rootG.getChildren().add(snakepic);
           rootG.getChildren().add(message);
           rootG.getChildren().add(spins);
           rootG.getChildren().add(mainMenu);
@@ -179,38 +182,23 @@ public class SnakeMain extends Application {
       }));
       timeline.setCycleCount(Timeline.INDEFINITE);
 
+      Image bimage = new Image("snakebackground.png");
+      BackgroundSize size = new BackgroundSize(600, 450, false, false, false, false);
+      BackgroundImage backgroundimage = new BackgroundImage(bimage, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, size);
+      Background background = new Background(backgroundimage);
+      root.setBackground(background);
 
-
-      root.setBackground(new Background(new BackgroundFill(Color.LIGHTGREEN, CornerRadii.EMPTY, Insets.EMPTY)));
-      //root.getChildren().add(imgView);
       root.getChildren().add(food);
       root.getChildren().add(snakeB);
       return root;
     }
 
-    /** Private method to retart the game. */
-    private void restartGame() {
-      stopGame();
-      startGame();
-    }
-
-    /** Private method to stop the game.Displays the score after the game is over. */
-    private void stopGame() {
-      //private int score;
-      running = false;
-      timeline.stop();
-      snake.clear();
-    }
-    /*
-    public static int getScore(){
-      return fscore;
-    }
-    */
     /** Private method to start the game. */
     private void startGame() {
       /** Default direction; snake will start running right. */
       direction = Direction.RIGHT;
       Rectangle head = new Rectangle(RECT_SIZE, RECT_SIZE);
+      head.setFill(Color.BLUE);
       snake.add(head);
       timeline.play();
       running = true;
@@ -256,14 +244,11 @@ public class SnakeMain extends Application {
 
 
 
-  /* Button to end the game. */
+      /* Button to end the game. */
       Button endGame = new Button("End Game");
       endGame.setLayoutX(100);
       endGame.setLayoutY(100);
-      //endGame.setOnAction(new EventHandler<ActionEvent>(){
-        //running = false;
-        //primaryStage.close();
-      //}
+
       primaryStage.setTitle("Snake Game");
       primaryStage.setScene(scene);
       primaryStage.show();
@@ -298,7 +283,6 @@ public class SnakeMain extends Application {
 
         root.getChildren().add(resumeButton);
         root.getChildren().add(endGameButton);
-
         pauseStage.setTitle("Pause");
         pauseStage.setScene(scene);
         pauseStage.show();
