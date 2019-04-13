@@ -239,7 +239,7 @@ public class MainMethod extends Application{
         loadGameButton.setLayoutY(875);
         loadGameButton.setOnAction(new EventHandler<ActionEvent>(){
             public void handle(ActionEvent a){
-                name.setText(player1.getName());
+               /* name.setText(player1.getName());
                 try{
                     player1.setName(FileIO.readName());
                     player1.setSpins(Integer.parseInt(FileIO.readSpins()));
@@ -249,7 +249,19 @@ public class MainMethod extends Application{
                     error.setVisible(true);
                     
                 }
-                name.setText(player1.getName());
+                name.setText(player1.getName());*/
+                if (FileIO.readName()!=null){
+                    
+                    player1.setName(FileIO.readName());
+                    name.setText(player1.getName());
+
+                    player1.setSpins(Integer.parseInt(FileIO.readSpins()));
+                    player1.setScore(Integer.parseInt(FileIO.readScore()));
+                }else{
+                    
+                    error.setVisible(true);
+                    
+                }
 
             }
         });
